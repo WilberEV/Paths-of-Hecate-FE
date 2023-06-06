@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 
 const reducers = combineReducers({
     user: userSlice,
-    detail: detailSlice
 })
 
 const persistConfig = {
