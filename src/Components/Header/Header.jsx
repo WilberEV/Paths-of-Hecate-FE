@@ -29,6 +29,9 @@ export const Header = () => {
             <Container>
               <Navbar.Brand href="/">Paths of Hecate</Navbar.Brand>
               <Nav className="me-auto">
+
+              </Nav>
+              <Nav>
                 <Nav.Link href="login">Login</Nav.Link>
                 <Nav.Link href="signup">Sign Up</Nav.Link>
               </Nav>
