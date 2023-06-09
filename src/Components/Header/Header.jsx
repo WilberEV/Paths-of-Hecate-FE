@@ -44,7 +44,6 @@ export const Header = () => {
                 <Navbar.Brand href="/">Paths of Hecate</Navbar.Brand>
                 <Nav className="me-auto">
                   <Nav.Link href="profile">Profile</Nav.Link>
-                  <Nav.Link href="characters">Characters</Nav.Link>
                 </Nav>
                 <Nav>
                 {datosUserRedux?.credentials?.user.role === "ADMIN" && (
