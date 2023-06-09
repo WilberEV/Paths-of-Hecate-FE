@@ -10,8 +10,8 @@
     display: flex;
     flex-direction: row;
   
-    justify-content: space-around;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
 }
 
 .profileBG{
@@ -33,4 +33,45 @@
 
 .profileBG img{
     height: 90vh;
+    z-index: 0;
+    position: absolute;
+}
+
+.profileContainer{
+    height: 90vh;
+    width: 75vw;
+
+    display: flex;
+    flex-direction: row-reverse;
+  
+    justify-content: space-around;
+    align-items: start;
+
+    z-index: 0;
+    position: absolute;
+}
+
+.userDataContainer{
+    height: 40vh;
+    width: 25vw;
+    margin-top: 10vh;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: rgba(82,87,92,0.75);
+    color: white;
+    border-radius: 1em;
+}
+
+.userDataContainer2{
+    height: 20vh;
+    width: 20vw;
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
 }
