@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import './SignUp.css'
+import "./SignUp.css";
+import { images } from '../../Components/Images/Images'
 
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { InputText } from "../../components/InputText/InputText";
 import { userSignUp } from "../../services/apiCalls";
-import { userData } from "../userSlice"
+import { userData } from "../userSlice";
 
 export const SignUp = () => {
-
   const userRdxData = useSelector(userData);
   const navigate = useNavigate();
 
@@ -32,8 +32,9 @@ export const SignUp = () => {
   const signingIn = () => {
     userSignUp(credentials)
       .then((result) => {
-
-        setMessage(`Well met, ${result.data.name}, may the Goddess light your path.`);
+        setMessage(
+          `Well met, ${result.data.name}, may the Goddess light your path.`
+        );
 
         setTimeout(() => {
           navigate("/login");
@@ -48,9 +49,11 @@ export const SignUp = () => {
     }
   }, []);
 
-
   return (
     <div className="signUpBody">
+      <div className="torches">
+        <img src={images.Torch} />
+      </div>
       {message != "" ? (
         <div>{message}</div>
       ) : (
@@ -82,12 +85,15 @@ export const SignUp = () => {
             />
           </div>
           <div className="signUpContainer3">
-          <div className="signUpButton" onClick={() => signingIn()}>
+            <div className="signUpButton" onClick={() => signingIn()}>
               Sign Up
             </div>
           </div>
         </div>
       )}
+      <div className="torches">
+        <img src={images.Torch} />
+      </div>
     </div>
   );
 };
