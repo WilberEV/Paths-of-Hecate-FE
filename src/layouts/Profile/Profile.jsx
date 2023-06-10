@@ -91,7 +91,12 @@ export const Profile = () => {
                 return (
                   <div key={chara._id} className="charaDataContainerBox">
                     <div className="charaDataContainer2">
-                      <img src={images.Torch} alt="Image" />
+                      {chara.sprite === "P1" && <img src={images.P1} />}
+                      {chara.sprite === "P2" && <img src={images.P2} />}
+                      {chara.sprite === "P3" && <img src={images.P3} />}
+                      {chara.sprite === "P4" && <img src={images.P4} />}
+                      {chara.sprite === "P5" && <img src={images.P5} />}
+                      {chara.sprite === "P6" && <img src={images.P6} />}
                     </div>
                     <div className="charaDataContainer3">
                       <div>Name: {chara.name}</div>
@@ -121,7 +126,10 @@ export const Profile = () => {
 
               <div className="newCharaButton">
                 {charaNumber > 0 && charaNumber < 5 && (
-                  <img src={images.Plus} onClick={() => navigate("/characters")}/>
+                  <img
+                    src={images.Plus}
+                    onClick={() => navigate("/characters")}
+                  />
                 )}
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./SignUp.css";
-import { images } from '../../Components/Images/Images'
+import { images } from "../../Components/Images/Images";
 
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -55,7 +55,7 @@ export const SignUp = () => {
         <img src={images.Torch} />
       </div>
       {message != "" ? (
-        <div>{message}</div>
+        <div className="welcomeText">{message}</div>
       ) : (
         <div className="signUpContainer">
           <div className="signUpContainer2">

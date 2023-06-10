@@ -80,7 +80,7 @@
 
 .charaDataContainer{
     height: 80vh;
-    width: 60vw;
+    width: 50vw;
     margin-top: 5vh;
 
     display: flex;
@@ -104,7 +104,7 @@
 
 .charaDataContainer2{
     height: 75vh;
-    width: 40vw;
+    width: 30vw;
 
     display: flex;
 

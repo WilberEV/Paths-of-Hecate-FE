@@ -16,7 +16,6 @@ export const userSignUp = async (credentials) =>{
 }
 
 //Find user
-
 export const bringUserProfile = async (id, token) => {
 
   let config = {
@@ -32,9 +31,16 @@ export const bringUserProfile = async (id, token) => {
 ////////////////////CHARACTERS RELATED FUNCTIONS////////////////////
 
 //Find Characters
-
 export const bringCharacterData = async (id) => {
 
   return await axios.get(`http://localhost:3000/characters/${id}`);
+
+}
+
+//Create Character
+export const charaCreate = async (data) =>{
+  console.log('/////////OLI///////////')
+  console.log(data, '/////////data///////////')
+  return await axios.post('http://localhost:3000/characters/', data);
 
 }

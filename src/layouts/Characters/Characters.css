@@ -1,38 +1,134 @@
-.charactersBody{
-    height: 90vh;
-    width: 100vw;
-  
-    background: radial-gradient(circle, rgba(12,23,19,1) 30%, rgba(7,7,10,1) 100%);
-  
-    margin: 0;
-    padding: 0;
-  
-    display: flex;
-    flex-direction: row;
-  
-    justify-content: start;
-    align-items: start;
+.charactersBody {
+  height: 90vh;
+  width: 100vw;
+
+  background: radial-gradient(
+    circle,
+    rgba(12, 23, 19, 1) 30%,
+    rgba(7, 7, 10, 1) 100%
+  );
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
 }
 
-.charactersBG{
-    height: 90vh;
-    width: 100vw;
-    
-    margin: 0;
-    padding: 0;
-  
-    display: flex;
-    flex-direction: row;
-  
-    justify-content: end;
-    align-items: end;
+.charactersBG {
+  height: 90vh;
+  width: 100vw;
 
-    z-index: 0;
-    position: absolute;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: end;
+  align-items: end;
+
+  z-index: 0;
+  position: absolute;
 }
 
-.charactersBG img{
-    height: 90vh;
-    z-index: 0;
-    position: absolute;
+.charactersBG img {
+  height: 90vh;
+  z-index: 0;
+  position: absolute;
+}
+
+.charactersContainer {
+  height: 80vh;
+  width: 80vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  background-color: rgba(82, 87, 92, 0.75);
+  color: white;
+  border-radius: 1em;
+
+  z-index: 1;
+}
+
+.characterDataContainer {
+  height: 70vh;
+  width: 20vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.typesContainer1 {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  background-color: #53c358;
+}
+
+.typesContainer2 {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  background-color: #5390c3;
+}
+
+.typesContainer3 {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  background-color: #c35353;
+}
+
+.charaSprite {
+  height: 70vh;
+  width: 30vw;
+
+  display: flex;
+}
+
+.charaSprite img {
+  height: 70vh;
+}
+
+.charaButtonContainer {
+  width: 20vw;
+  border-top: 5vh;
+
+  justify-content: space-around;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.charaButton {
+  width: 6em;
+  height: 3em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #101013;
+
+  border-radius: 0.5em;
+  transition: 0.3s;
+  color: white;
+
+  cursor: pointer;
+}
+
+.welcomeText {
+  color: #e4c435;
 }
