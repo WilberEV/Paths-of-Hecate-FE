@@ -39,7 +39,7 @@
 
 .profileContainer{
     height: 90vh;
-    width: 75vw;
+    width: 90vw;
 
     display: flex;
     flex-direction: row-reverse;
@@ -52,7 +52,7 @@
 }
 
 .userDataContainer{
-    height: 40vh;
+    height: 35vh;
     width: 25vw;
     margin-top: 10vh;
 
@@ -64,6 +64,7 @@
     background-color: rgba(82,87,92,0.75);
     color: white;
     border-radius: 1em;
+    z-index: 1;
 }
 
 .userDataContainer2{
@@ -74,4 +75,48 @@
     justify-content: start;
     align-items: start;
     flex-direction: column;
+    z-index: 1;
+}
+
+.charaDataContainer{
+    height: 80vh;
+    width: 60vw;
+    margin-top: 5vh;
+
+    display: flex;
+    justify-content: space-between;
+
+    background-color: rgba(82,87,92,0.75);
+    color: white;
+    border-radius: 1em;
+
+    overflow: auto;
+    scrollbar-width: none;
+    z-index: 1;
+}
+
+.charaDataContainerBox{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.charaDataContainer2{
+    height: 75vh;
+    width: 40vw;
+
+    display: flex;
+    z-index: 1;
+}
+
+.charaDataContainer3{
+    height: 75vh;
+    width: 10vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    z-index: 1;
 }

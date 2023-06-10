@@ -27,3 +27,14 @@ export const bringUserProfile = async (id, token) => {
 
   return await axios.get(`http://localhost:3000/user/${id}`, config);
 }
+
+
+////////////////////CHARACTERS RELATED FUNCTIONS////////////////////
+
+//Find Characters
+
+export const bringCharacterData = async (id) => {
+
+  return await axios.get(`http://localhost:3000/characters/${id}`);
+
+}

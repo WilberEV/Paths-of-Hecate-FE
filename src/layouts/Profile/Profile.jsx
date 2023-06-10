@@ -5,7 +5,7 @@ import { images } from "../../Components/Images/Images";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
-import { bringUserProfile } from "../../services/apiCalls";
+import { bringUserProfile, bringCharacterData } from "../../services/apiCalls";
 
 export const Profile = () => {
   const userRdxData = useSelector(userData);
@@ -16,6 +16,18 @@ export const Profile = () => {
     name: "",
     email: "",
   });
+
+  const [charaDetails, setCharaDetails] = useState({
+    name: "",
+    class: "",
+    turnsLeft: 0,
+    turnsPlayed: 0,
+    sprite: "",
+    triggeredEvents: [],
+    items: [],
+  });
+
+  const [spriteRoute, setSpriteRoute] = useState("");
 
   //Handlers
   useEffect(() => {
@@ -33,7 +45,17 @@ export const Profile = () => {
         setProfileDetails(results.data);
       })
       .catch((error) => console.log(error));
-  }, [profileDetails]);
+    }, [profileDetails]);
+    
+    useEffect(() => {
+      bringCharacterData(userRdxData.credentials.user.id)
+        .then((results) => {
+          setCharaDetails(results.data);
+          setSpriteRoute(`../../assets/img/${results.data.sprite}`);
+        })
+        .catch((error) => console.log(error));
+    }, [charaDetails]);
+
 
   return (
     <div className="profileBody">
@@ -62,7 +84,47 @@ export const Profile = () => {
             )}
           </div>
         </div>
-        <div className="charaDataContainer"></div>
+        <div className="charaDataContainer">
+          {charaDetails.name !== "" ? (
+            <div>
+              {charaDetails.map((chara) => {
+                return (
+                  <div key={chara._id} className="charaDataContainerBox">
+                    <div className="charaDataContainer2">
+                      <img src={images.Torch} alt="Image" />
+                    </div>
+                    <div className="charaDataContainer3">
+                      <div>Name: {chara.name}</div>
+                      <div>Class: {chara.class}</div>
+                      <div>Turns Left: {chara.turnsLeft}</div>
+                      <div>Turns Played: {chara.turnsPlayed}</div>
+                      <div>
+                        {chara.triggeredEvents.lenght ? (
+                          <div>
+                            Triggered events: {chara.triggeredEvents.lenght}
+                          </div>
+                        ) : (
+                          <div>
+                            Triggered events: 0
+                          </div>
+                        )}
+                      </div>
+                      <div>
+                        {chara.items.lenght ? (
+                          <div>Items: {chara.items.lenght}</div>
+                        ) : (
+                          <div> Items: 0</div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>Loading</div>
+          )}
+        </div>
       </div>
     </div>
   );
