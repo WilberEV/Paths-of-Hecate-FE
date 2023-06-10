@@ -1,0 +1,38 @@
+.charactersBody{
+    height: 90vh;
+    width: 100vw;
+  
+    background: radial-gradient(circle, rgba(12,23,19,1) 30%, rgba(7,7,10,1) 100%);
+  
+    margin: 0;
+    padding: 0;
+  
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: start;
+    align-items: start;
+}
+
+.charactersBG{
+    height: 90vh;
+    width: 100vw;
+    
+    margin: 0;
+    padding: 0;
+  
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: end;
+    align-items: end;
+
+    z-index: 0;
+    position: absolute;
+}
+
+.charactersBG img{
+    height: 90vh;
+    z-index: 0;
+    position: absolute;
+}

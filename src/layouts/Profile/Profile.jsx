@@ -27,7 +27,8 @@ export const Profile = () => {
     items: [],
   });
 
-  const [spriteRoute, setSpriteRoute] = useState("");
+  // const [spriteRoute, setSpriteRoute] = useState("");
+  const [charaNumber, setCharaNumber] = useState(0);
 
   //Handlers
   useEffect(() => {
@@ -45,17 +46,16 @@ export const Profile = () => {
         setProfileDetails(results.data);
       })
       .catch((error) => console.log(error));
-    }, [profileDetails]);
-    
-    useEffect(() => {
-      bringCharacterData(userRdxData.credentials.user.id)
-        .then((results) => {
-          setCharaDetails(results.data);
-          setSpriteRoute(`../../assets/img/${results.data.sprite}`);
-        })
-        .catch((error) => console.log(error));
-    }, [charaDetails]);
+  }, [profileDetails]);
 
+  useEffect(() => {
+    bringCharacterData(userRdxData.credentials.user.id)
+      .then((results) => {
+        setCharaDetails(results.data);
+        setCharaNumber(results.data.length);
+      })
+      .catch((error) => console.log(error));
+  }, [charaDetails]);
 
   return (
     <div className="profileBody">
@@ -104,9 +104,7 @@ export const Profile = () => {
                             Triggered events: {chara.triggeredEvents.lenght}
                           </div>
                         ) : (
-                          <div>
-                            Triggered events: 0
-                          </div>
+                          <div>Triggered events: 0</div>
                         )}
                       </div>
                       <div>
@@ -120,6 +118,12 @@ export const Profile = () => {
                   </div>
                 );
               })}
+
+              <div className="newCharaButton">
+                {charaNumber > 0 && charaNumber < 5 && (
+                  <img src={images.Plus} onClick={() => navigate("/characters")}/>
+                )}
+              </div>
             </div>
           ) : (
             <div>Loading</div>

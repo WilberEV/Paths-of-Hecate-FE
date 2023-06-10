@@ -57,14 +57,14 @@
     margin-top: 10vh;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 
     background-color: rgba(82,87,92,0.75);
     color: white;
     border-radius: 1em;
-    z-index: 1;
+
 }
 
 .userDataContainer2{
@@ -75,7 +75,7 @@
     justify-content: start;
     align-items: start;
     flex-direction: column;
-    z-index: 1;
+
 }
 
 .charaDataContainer{
@@ -92,7 +92,7 @@
 
     overflow: auto;
     scrollbar-width: none;
-    z-index: 1;
+
 }
 
 .charaDataContainerBox{
@@ -107,7 +107,7 @@
     width: 40vw;
 
     display: flex;
-    z-index: 1;
+
 }
 
 .charaDataContainer3{
@@ -118,5 +118,17 @@
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    z-index: 1;
+
+}
+.newCharaButton{
+    height: 10vh;
+    width: 10vh;
+    
+}
+
+.newCharaButton img{
+    height: 10vh;
+    width: 10vh;
+    
+    cursor: pointer;
 }
