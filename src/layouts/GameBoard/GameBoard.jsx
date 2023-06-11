@@ -22,7 +22,7 @@ export const GameBoard = () => {
     items: [],
   });
 
-  const [charaName, setCharaName] = useState("");
+  const [charaName, setCharaName] = useState("ALL");
   const [charaItems, setCharaItems] = useState([""]);
   const [itemDescription, setItemDescription] = useState("");
 
@@ -34,16 +34,10 @@ export const GameBoard = () => {
   }, []);
 
   useEffect(() => {
-    console.log('oli')
-
-  }, []);
-
-
-  useEffect(() => {
-    bringCharacterData("Teru", userRdxData.credentials.user.id)
+    bringCharacterData(charaName, userRdxData.credentials.user.id)
       .then((results) => {
         setCharaDetails(results.data);
-        results.data.map(chara => setCharaItems(chara.items))
+        results.data.map((chara) => setCharaItems(chara.items));
       })
       .catch((error) => console.log(error));
   }, [charaName]);
@@ -54,14 +48,14 @@ export const GameBoard = () => {
 
   return (
     <div className="gameBody">
-      <div className="charaSection">
-        <div className="playerData">
+      {charaName === "ALL" ? (
+        <div>
           {charaDetails.name !== "" ? (
-            <div>
+            <div className="characterSelection">
               {charaDetails.map((chara) => {
                 return (
-                  <div key={chara._id} className="playerDataContainer">
-                    <div className="playerDataContainer2">
+                  <div key={chara._id} className="charaSelectionContainer">
+                    <div className="charaSelectionContainer2">
                       {chara.sprite === "P1" && <img src={images.P1} />}
                       {chara.sprite === "P2" && <img src={images.P2} />}
                       {chara.sprite === "P3" && <img src={images.P3} />}
@@ -69,10 +63,11 @@ export const GameBoard = () => {
                       {chara.sprite === "P5" && <img src={images.P5} />}
                       {chara.sprite === "P6" && <img src={images.P6} />}
                     </div>
-                    <div className="playerDataContainer3">
+                    <div className="charaSelectionContainer3">
                       <div>Name: {chara.name}</div>
                       <div>Class: {chara.class}</div>
                       <div>Turns Left: {chara.turnsLeft}</div>
+                      <div>Turns Played: {chara.turnsPlayed}</div>
                     </div>
                   </div>
                 );
@@ -82,37 +77,71 @@ export const GameBoard = () => {
             <div>Loading</div>
           )}
         </div>
-        <div className="mapContainer">
-          {checkItems("Map") ? <div className="mapData"></div> : <div></div>}
-        </div>
-      </div>
-      <div className="gameSection">
-        <div>turns left</div>
-        <div>arrow up</div>
-        <div>
-          <div>arrow left</div>
-          <div>game screen</div>
-          <div>arrow right</div>
-        </div>
-        <div>arrow down</div>
-      </div>
-      <div className="itemSection">
-        <div className="inventoryContainer">
-            <div>Inventory:</div>
-            <div>
-            {charaItems.map((item =>{
-              return (
-                <div key={item._id} className="itemDisplay">
-                  <div onClick={()=> setItemDescription(item)}>{item}</div>
+      ) : (
+        <div className="gameBody">
+          <div className="charaSection">
+            <div className="playerData">
+              {charaDetails.name !== "" ? (
+                <div>
+                  {charaDetails.map((chara) => {
+                    return (
+                      <div key={chara._id} className="playerDataContainer">
+                        <div className="playerDataContainer2">
+                          {chara.sprite === "P1" && <img src={images.P1} />}
+                          {chara.sprite === "P2" && <img src={images.P2} />}
+                          {chara.sprite === "P3" && <img src={images.P3} />}
+                          {chara.sprite === "P4" && <img src={images.P4} />}
+                          {chara.sprite === "P5" && <img src={images.P5} />}
+                          {chara.sprite === "P6" && <img src={images.P6} />}
+                        </div>
+                        <div className="playerDataContainer3">
+                          <div>Name: {chara.name}</div>
+                          <div>Class: {chara.class}</div>
+                          <div>Turns Left: {chara.turnsLeft}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              )
-            }))}
+              ) : (
+                <div>Loading</div>
+              )}
+            </div>
+            <div className="mapContainer">
+              {checkItems("Map") ? (
+                <div className="mapData" key={charaItems.key}></div>
+              ) : (
+                <div></div>
+              )}
             </div>
           </div>
-        <div className="itemDescription">
-            {itemDescription}
+          <div className="gameSection">
+            <div>turns left</div>
+            <div>arrow up</div>
+            <div>
+              <div>arrow left</div>
+              <div>game screen</div>
+              <div>arrow right</div>
+            </div>
+            <div>arrow down</div>
+          </div>
+          <div className="itemSection">
+            <div className="inventoryContainer">
+              <div>Inventory:</div>
+              <div>
+                {charaItems.map((item) => {
+                  return (
+                    <div key={item._id} className="itemDisplay">
+                      <div onClick={() => setItemDescription(item)}>{item}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="itemDescription">{itemDescription}</div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

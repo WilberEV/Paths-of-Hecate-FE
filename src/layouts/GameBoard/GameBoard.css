@@ -18,6 +18,52 @@
     align-items: center;
   }
 
+.characterSelection{
+  height: 80vh;
+  width: 90vw;
+
+  display: flex;
+  flex-direction: row;
+
+  background: rgba(82,87,92,0.75);
+  border-radius: 1em;
+  color: white;
+
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+.charaSelectionContainer{
+  height: 80vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.charaSelectionContainer2{
+  height: 50vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.charaSelectionContainer2 img{
+  height: 50vh;
+}
+
+.charaSelectionContainer3{
+  height: 15vh;
+
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+}
+
 .charaSection{
   height: 90vh;
   width: 25vw;
