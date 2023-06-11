@@ -46,32 +46,37 @@ export const GameBoard = () => {
     return charaItems.includes(item);
   };
 
+  const chooseChara = (name) =>{
+    return setCharaName(name);
+  }
+
   return (
     <div className="gameBody">
       {charaName === "ALL" ? (
         <div>
           {charaDetails.name !== "" ? (
-            <div className="characterSelection">
-              {charaDetails.map((chara) => {
-                return (
-                  <div key={chara._id} className="charaSelectionContainer">
-                    <div className="charaSelectionContainer2">
-                      {chara.sprite === "P1" && <img src={images.P1} />}
-                      {chara.sprite === "P2" && <img src={images.P2} />}
-                      {chara.sprite === "P3" && <img src={images.P3} />}
-                      {chara.sprite === "P4" && <img src={images.P4} />}
-                      {chara.sprite === "P5" && <img src={images.P5} />}
-                      {chara.sprite === "P6" && <img src={images.P6} />}
+            <div className="chooseCharacter">
+              <div>Choose your character:</div>
+              <div className="characterSelection">
+                {charaDetails.map((chara) => {
+                  return (
+                    <div key={chara._id} className="charaSelectionContainer">
+                      <div className="charaSelectionContainer2" onClick={()=>chooseChara(chara.name)}>
+                        {chara.sprite === "P1" && <img src={images.P1} />}
+                        {chara.sprite === "P2" && <img src={images.P2} />}
+                        {chara.sprite === "P3" && <img src={images.P3} />}
+                        {chara.sprite === "P4" && <img src={images.P4} />}
+                        {chara.sprite === "P5" && <img src={images.P5} />}
+                        {chara.sprite === "P6" && <img src={images.P6} />}
+                      </div>
+                      <div className="charaSelectionContainer3">
+                        <div>Name: {chara.name}</div>
+                        <div>Turns Left: {chara.turnsLeft}</div>
+                      </div>
                     </div>
-                    <div className="charaSelectionContainer3">
-                      <div>Name: {chara.name}</div>
-                      <div>Class: {chara.class}</div>
-                      <div>Turns Left: {chara.turnsLeft}</div>
-                      <div>Turns Played: {chara.turnsPlayed}</div>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           ) : (
             <div>Loading</div>
