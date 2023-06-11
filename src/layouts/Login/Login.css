@@ -1,3 +1,8 @@
+@font-face {
+  font-family: hardinge;
+  src: url(../../assets/Hardinge\ Free\ Trial.ttf);
+}
+
 .loginBody{
     height: 90vh;
     width: 100vw;
@@ -74,6 +79,8 @@
 
   .welcomeText{
     color: #e4c435;
+    font-family: hardinge;
+    font-size: 1.5em;
   }
 
   .torches{

@@ -125,7 +125,7 @@ export const Profile = () => {
               })}
 
               <div className="newCharaButton">
-                {charaNumber > 0 && charaNumber < 5 && (
+                {charaNumber >= 0 && charaNumber < 5 && (
                   <img
                     src={images.Plus}
                     onClick={() => navigate("/characters")}

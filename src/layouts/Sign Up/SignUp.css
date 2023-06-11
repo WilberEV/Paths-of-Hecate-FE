@@ -1,3 +1,8 @@
+@font-face {
+  font-family: hardinge;
+  src: url(../../assets/Hardinge\ Free\ Trial.ttf);
+}
+
 .signUpBody {
   height: 90vh;
   width: 100vw;
@@ -88,6 +93,8 @@
   height: 50vh;
 }
 
-.welcomeText {
+.welcomeText{
   color: #e4c435;
+  font-family: hardinge;
+  font-size: 1.5em;
 }

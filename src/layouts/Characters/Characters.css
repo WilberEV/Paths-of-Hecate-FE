@@ -1,3 +1,8 @@
+@font-face {
+  font-family: hardinge;
+  src: url(../../assets/Hardinge\ Free\ Trial.ttf);
+}
+
 .charactersBody {
   height: 90vh;
   width: 100vw;
@@ -129,6 +134,8 @@
   cursor: pointer;
 }
 
-.welcomeText {
+.welcomeText{
   color: #e4c435;
+  font-family: hardinge;
+  font-size: 1.5em;
 }

@@ -18,6 +18,12 @@
   align-items: center;
 }
 
+.homeBG{
+  height: 90vh;
+  z-index: 0;
+  position: absolute;
+}
+
 .torches {
   height: 90vh;
 
@@ -29,4 +35,14 @@
 
 .torches img {
   height: 50vh;
+}
+
+.startButton{
+  height: 10vh;
+  z-index: 1;
+  cursor: pointer;
+}
+.startButton img{
+  height: 10vh;
+
 }

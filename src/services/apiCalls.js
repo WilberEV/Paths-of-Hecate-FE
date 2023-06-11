@@ -39,8 +39,6 @@ export const bringCharacterData = async (id) => {
 
 //Create Character
 export const charaCreate = async (data) =>{
-  console.log('/////////OLI///////////')
-  console.log(data, '/////////data///////////')
   return await axios.post('http://localhost:3000/characters/', data);
 
 }
