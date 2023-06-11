@@ -1,44 +1,53 @@
 .gameBody {
-    height: 90vh;
-    width: 100vw;
-  
-    background: radial-gradient(
-      circle,
-      rgba(45, 45, 48, 1) 0%,
-      rgba(7, 7, 10, 1) 55%
-    );
-  
-    margin: 0;
-    padding: 0;
-  
-    display: flex;
-    flex-direction: row;
-  
-    justify-content: space-around;
-    align-items: center;
-  }
+  height: 90vh;
+  width: 100vw;
 
-  .chooseCharacter{
-    height: 80vh;
-  
-    display: flex;
-    flex-direction: column;
-  
-    background: rgba(82,87,92,0.75);
-    border-radius: 1em;
-    color: white;
-  
-    overflow: auto;
-    overflow-y: hidden;
-  }
+  background: radial-gradient(
+    circle,
+    rgba(45, 45, 48, 1) 0%,
+    rgba(7, 7, 10, 1) 55%
+  );
 
-.characterSelection{
-  height: 75vh;
+  margin: 0;
+  padding: 0;
 
   display: flex;
   flex-direction: row;
 
-  background: rgba(82,87,92,0.75);
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+/* Character selection menu */
+.chooseCharacter {
+  height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(82, 87, 92, 0.75);
+  border-radius: 1em;
+  color: white;
+
+  overflow: auto;
+  overflow-y: hidden;
+}
+.chooseCharacter p{
+  margin-right: 3vw;
+  margin-left: 3vw;
+}
+
+.characterSelection {
+  height: 65vh;
+  width: auto;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(82, 87, 92, 0.75);
   border-radius: 1em;
   color: white;
 
@@ -46,8 +55,8 @@
   overflow-y: hidden;
 }
 
-.charaSelectionContainer{
-  height: 75vh;
+.charaSelectionContainer {
+  height: 65vh;
 
   display: flex;
   justify-content: center;
@@ -55,7 +64,7 @@
   flex-direction: column;
 }
 
-.charaSelectionContainer2{
+.charaSelectionContainer2 {
   height: 50vh;
 
   display: flex;
@@ -66,12 +75,12 @@
   cursor: pointer;
 }
 
-.charaSelectionContainer2 img{
+.charaSelectionContainer2 img {
   height: 50vh;
 }
 
-.charaSelectionContainer3{
-  height: 15vh;
+.charaSelectionContainer3 {
+  height: 8vh;
 
   display: flex;
   justify-content: start;
@@ -79,7 +88,18 @@
   flex-direction: column;
 }
 
-.charaSection{
+.createCharaButton {
+  height: 10vh;
+  width: 10vh;
+
+  margin-right: 3vw;
+  margin-left: 3vw;
+
+  cursor: pointer;
+}
+
+/* Current character display */
+.charaSection {
   height: 90vh;
   width: 25vw;
 
@@ -89,25 +109,25 @@
   flex-direction: column;
 }
 
-.playerData{
+.playerData {
   height: 50vh;
   width: 25vw;
 
   display: flex;
 
-  background: rgba(82,87,92,0.75);
+  background: rgba(82, 87, 92, 0.75);
   border-radius: 1em;
   color: white;
 }
 
-.playerDataContainer{
+.playerDataContainer {
   height: 50vh;
   width: 25vw;
 
   display: flex;
   flex-direction: row;
 }
-.playerDataContainer2{
+.playerDataContainer2 {
   height: 50vh;
   width: 15vw;
 
@@ -115,20 +135,23 @@
   justify-content: center;
   align-items: center;
 }
-.playerDataContainer2 img{
+.playerDataContainer2 img {
   width: 15vw;
 }
-.playerDataContainer3{
+.playerDataContainer3 {
   height: 50vh;
   width: 10vw;
 
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: start;
   flex-direction: column;
+
+  margin-top: 5vh;
 }
 
-.mapContainer{
+/* Map display */
+.mapContainer {
   height: 35vh;
   width: 20vw;
 
@@ -136,25 +159,33 @@
   justify-content: center;
   align-items: center;
 
-  background: rgba(82,87,92,0.75);
+  background: rgba(82, 87, 92, 0.75);
   border-radius: 1em;
   color: white;
 }
 
-.mapData{
+.mapData {
   height: 35vh;
   width: 35vh;
 
   background: black;
 }
 
-.gameSection{
+
+/* Game display and buttons */
+.gameSection {
   height: 90vh;
   width: 50vw;
-  background-color: blue;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.itemSection{
+
+
+/* Items display and description */
+.itemSection {
   height: 90vh;
   width: 25vw;
 
@@ -164,21 +195,21 @@
   flex-direction: column;
 }
 
-.inventoryContainer{
+.inventoryContainer {
   height: 50vh;
   width: 25vw;
-  
+
   display: flex;
   align-items: center;
   justify-content: start;
   flex-direction: column;
 
-  background: rgba(82,87,92,0.75);
+  background: rgba(82, 87, 92, 0.75);
   border-radius: 1em;
   color: white;
 }
 
-.itemDisplay{
+.itemDisplay {
   height: 40vh;
   width: 22vw;
 
@@ -188,7 +219,7 @@
   flex-direction: row;
 }
 
-.itemDescription{
+.itemDescription {
   height: 35vh;
   width: 25vw;
 
@@ -196,7 +227,7 @@
   justify-content: center;
   align-items: center;
 
-  background: rgba(82,87,92,0.75);
+  background: rgba(82, 87, 92, 0.75);
   border-radius: 1em;
   color: white;
 }

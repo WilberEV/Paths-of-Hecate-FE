@@ -121,13 +121,17 @@
 
 }
 .newCharaButton{
-    height: 10vh;
+    height: 15vh;
     width: 50vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
 }
 
 .newCharaButton img{
     height: 10vh;
     width: 10vh;
-    
-    cursor: pointer;
 }

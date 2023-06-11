@@ -78,6 +78,8 @@
   align-items: start;
   flex-direction: column;
   background-color: #53c358;
+
+  cursor: pointer;
 }
 
 .typesContainer2 {
@@ -86,6 +88,8 @@
   align-items: start;
   flex-direction: column;
   background-color: #5390c3;
+
+  cursor: pointer;
 }
 
 .typesContainer3 {
@@ -94,6 +98,8 @@
   align-items: start;
   flex-direction: column;
   background-color: #c35353;
+
+  cursor: pointer;
 }
 
 .charaSprite {
@@ -101,6 +107,7 @@
   width: 30vw;
 
   display: flex;
+  cursor: pointer;
 }
 
 .charaSprite img {

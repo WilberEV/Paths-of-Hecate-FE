@@ -25,6 +25,7 @@ export const GameBoard = () => {
   const [charaName, setCharaName] = useState("ALL");
   const [charaItems, setCharaItems] = useState([""]);
   const [itemDescription, setItemDescription] = useState("");
+  const [charaNumber, setCharaNumber] = useState(0);
 
   //Handlers
   useEffect(() => {
@@ -37,6 +38,7 @@ export const GameBoard = () => {
     bringCharacterData(charaName, userRdxData.credentials.user.id)
       .then((results) => {
         setCharaDetails(results.data);
+        setCharaNumber(results.data.length);
         results.data.map((chara) => setCharaItems(chara.items));
       })
       .catch((error) => console.log(error));
@@ -46,9 +48,9 @@ export const GameBoard = () => {
     return charaItems.includes(item);
   };
 
-  const chooseChara = (name) =>{
+  const chooseChara = (name) => {
     return setCharaName(name);
-  }
+  };
 
   return (
     <div className="gameBody">
@@ -56,12 +58,15 @@ export const GameBoard = () => {
         <div>
           {charaDetails.name !== "" ? (
             <div className="chooseCharacter">
-              <div>Choose your character:</div>
+              <p>Choose your character:</p>
               <div className="characterSelection">
                 {charaDetails.map((chara) => {
                   return (
                     <div key={chara._id} className="charaSelectionContainer">
-                      <div className="charaSelectionContainer2" onClick={()=>chooseChara(chara.name)}>
+                      <div
+                        className="charaSelectionContainer2"
+                        onClick={() => chooseChara(chara.name)}
+                      >
                         {chara.sprite === "P1" && <img src={images.P1} />}
                         {chara.sprite === "P2" && <img src={images.P2} />}
                         {chara.sprite === "P3" && <img src={images.P3} />}
@@ -76,6 +81,15 @@ export const GameBoard = () => {
                     </div>
                   );
                 })}
+                <div>
+                  {charaNumber >= 0 && charaNumber < 5 && (
+                    <img
+                      className="createCharaButton"
+                      src={images.Plus}
+                      onClick={() => navigate("/characters")}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           ) : (
