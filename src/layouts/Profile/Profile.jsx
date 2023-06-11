@@ -49,7 +49,7 @@ export const Profile = () => {
   }, [profileDetails]);
 
   useEffect(() => {
-    bringCharacterData(userRdxData.credentials.user.id)
+    bringCharacterData('ALL', userRdxData.credentials.user.id)
       .then((results) => {
         setCharaDetails(results.data);
         setCharaNumber(results.data.length);

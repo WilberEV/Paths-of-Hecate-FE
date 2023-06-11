@@ -31,9 +31,9 @@ export const bringUserProfile = async (id, token) => {
 ////////////////////CHARACTERS RELATED FUNCTIONS////////////////////
 
 //Find Characters
-export const bringCharacterData = async (id) => {
+export const bringCharacterData = async (charaName, id) => {
 
-  return await axios.get(`http://localhost:3000/characters/${id}`);
+  return await axios.get(`http://localhost:3000/characters?name=${charaName}&owner=${id}`);
 
 }
 

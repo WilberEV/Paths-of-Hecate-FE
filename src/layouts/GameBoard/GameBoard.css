@@ -17,3 +17,21 @@
     justify-content: space-around;
     align-items: center;
   }
+
+.charaSection{
+  height: 90vh;
+  width: 25vw;
+  background-color: green;
+}
+
+.gameSection{
+  height: 90vh;
+  width: 50vw;
+  background-color: blue;
+}
+
+.itemSection{
+  height: 90vh;
+  width: 25vw;
+  background-color: red;
+}
