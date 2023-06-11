@@ -27,7 +27,6 @@ export const Profile = () => {
     items: [],
   });
 
-  // const [spriteRoute, setSpriteRoute] = useState("");
   const [charaNumber, setCharaNumber] = useState(0);
 
   //Handlers
@@ -53,6 +52,7 @@ export const Profile = () => {
       .then((results) => {
         setCharaDetails(results.data);
         setCharaNumber(results.data.length);
+        console.log(results)
       })
       .catch((error) => console.log(error));
   }, [charaDetails]);
@@ -104,17 +104,17 @@ export const Profile = () => {
                       <div>Turns Left: {chara.turnsLeft}</div>
                       <div>Turns Played: {chara.turnsPlayed}</div>
                       <div>
-                        {chara.triggeredEvents.lenght ? (
+                        {chara.triggeredEvents.length ? (
                           <div>
-                            Triggered events: {chara.triggeredEvents.lenght}
+                            Triggered events: {chara.triggeredEvents.length}
                           </div>
                         ) : (
                           <div>Triggered events: 0</div>
                         )}
                       </div>
                       <div>
-                        {chara.items.lenght ? (
-                          <div>Items: {chara.items.lenght}</div>
+                        {chara.items.length ? (
+                          <div>Items: {chara.items.length}</div>
                         ) : (
                           <div> Items: 0</div>
                         )}

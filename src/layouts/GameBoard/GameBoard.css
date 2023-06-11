@@ -21,8 +21,58 @@
 .charaSection{
   height: 90vh;
   width: 25vw;
-  background-color: green;
 }
+
+.playerData{
+  height: 50vh;
+  width: 25vw;
+
+  display: flex;
+
+  background: rgba(82,87,92,0.75);
+  border-radius: 1em;
+  color: white;
+}
+
+.playerDataContainer{
+  height: 50vh;
+  width: 25vw;
+
+  display: flex;
+  flex-direction: row;
+}
+.playerDataContainer2{
+  height: 50vh;
+  width: 15vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playerDataContainer2 img{
+  width: 15vw;
+}
+.playerDataContainer3{
+  height: 50vh;
+  width: 10vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+
+.mapContainer{
+  height: 35vh;
+  width: 35vh;
+
+  display: flex;
+
+  background: rgba(82,87,92,0.75);
+  border-radius: 1em;
+  color: white;
+}
+
 
 .gameSection{
   height: 90vh;
