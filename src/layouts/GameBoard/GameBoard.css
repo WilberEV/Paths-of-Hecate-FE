@@ -21,6 +21,11 @@
 .charaSection{
   height: 90vh;
   width: 25vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 .playerData{
@@ -64,15 +69,23 @@
 
 .mapContainer{
   height: 35vh;
-  width: 35vh;
+  width: 20vw;
 
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   background: rgba(82,87,92,0.75);
   border-radius: 1em;
   color: white;
 }
 
+.mapData{
+  height: 35vh;
+  width: 35vh;
+
+  background: black;
+}
 
 .gameSection{
   height: 90vh;
@@ -83,5 +96,46 @@
 .itemSection{
   height: 90vh;
   width: 25vw;
-  background-color: red;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.inventoryContainer{
+  height: 50vh;
+  width: 25vw;
+  
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+
+  background: rgba(82,87,92,0.75);
+  border-radius: 1em;
+  color: white;
+}
+
+.itemDisplay{
+  height: 40vh;
+  width: 22vw;
+
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: row;
+}
+
+.itemDescription{
+  height: 35vh;
+  width: 25vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(82,87,92,0.75);
+  border-radius: 1em;
+  color: white;
 }

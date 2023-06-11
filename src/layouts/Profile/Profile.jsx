@@ -52,7 +52,6 @@ export const Profile = () => {
       .then((results) => {
         setCharaDetails(results.data);
         setCharaNumber(results.data.length);
-        console.log(results)
       })
       .catch((error) => console.log(error));
   }, [charaDetails]);

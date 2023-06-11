@@ -23,6 +23,8 @@ export const GameBoard = () => {
   });
 
   const [charaName, setCharaName] = useState("");
+  const [charaItems, setCharaItems] = useState([""]);
+  const [itemDescription, setItemDescription] = useState("");
 
   //Handlers
   useEffect(() => {
@@ -32,12 +34,23 @@ export const GameBoard = () => {
   }, []);
 
   useEffect(() => {
-    bringCharacterData("Sylvie", userRdxData.credentials.user.id)
+    console.log('oli')
+
+  }, []);
+
+
+  useEffect(() => {
+    bringCharacterData("Teru", userRdxData.credentials.user.id)
       .then((results) => {
         setCharaDetails(results.data);
+        results.data.map(chara => setCharaItems(chara.items))
       })
       .catch((error) => console.log(error));
   }, [charaName]);
+
+  const checkItems = (item) => {
+    return charaItems.includes(item);
+  };
 
   return (
     <div className="gameBody">
@@ -70,9 +83,7 @@ export const GameBoard = () => {
           )}
         </div>
         <div className="mapContainer">
-          {charaDetails.items == ["Map"] && (
-            <div className="mapData"></div>
-          )}
+          {checkItems("Map") ? <div className="mapData"></div> : <div></div>}
         </div>
       </div>
       <div className="gameSection">
@@ -86,8 +97,21 @@ export const GameBoard = () => {
         <div>arrow down</div>
       </div>
       <div className="itemSection">
-        <div>inventory</div>
-        <div>item description</div>
+        <div className="inventoryContainer">
+            <div>Inventory:</div>
+            <div>
+            {charaItems.map((item =>{
+              return (
+                <div key={item._id} className="itemDisplay">
+                  <div onClick={()=> setItemDescription(item)}>{item}</div>
+                </div>
+              )
+            }))}
+            </div>
+          </div>
+        <div className="itemDescription">
+            {itemDescription}
+        </div>
       </div>
     </div>
   );
