@@ -26,6 +26,7 @@ export const GameBoard = () => {
   const [charaItems, setCharaItems] = useState([""]);
   const [itemDescription, setItemDescription] = useState("");
   const [charaNumber, setCharaNumber] = useState(0);
+  const [turnCounter, setTurnCounter] = useState(0);
 
   //Handlers
   useEffect(() => {
@@ -40,6 +41,7 @@ export const GameBoard = () => {
         setCharaDetails(results.data);
         setCharaNumber(results.data.length);
         results.data.map((chara) => setCharaItems(chara.items));
+        results.data.map((chara) => setTurnCounter(chara.turnsLeft));
       })
       .catch((error) => console.log(error));
   }, [charaName]);
@@ -116,7 +118,6 @@ export const GameBoard = () => {
                         <div className="playerDataContainer3">
                           <div>Name: {chara.name}</div>
                           <div>Class: {chara.class}</div>
-                          <div>Turns Left: {chara.turnsLeft}</div>
                         </div>
                       </div>
                     );
@@ -135,14 +136,16 @@ export const GameBoard = () => {
             </div>
           </div>
           <div className="gameSection">
-            <div>turns left</div>
-            <div>arrow up</div>
-            <div>
-              <div>arrow left</div>
-              <div>game screen</div>
-              <div>arrow right</div>
+            <div className="turnCounter">
+              Turns left: {turnCounter}
             </div>
-            <div>arrow down</div>
+            <div className="upArrow"></div>
+            <div className="middleSection">
+              <div className="leftArrow"></div>
+              <div className="gameScreen"></div>
+              <div className="rightArrow"></div>
+            </div>
+            <div className="downArrow"></div>
           </div>
           <div className="itemSection">
             <div className="inventoryContainer">

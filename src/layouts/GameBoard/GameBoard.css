@@ -182,7 +182,58 @@
   flex-direction: column;
 }
 
+.turnCounter{
+  height: 10vh;
+  width: 50vw;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-family: hardinge;
+  font-size: 1.5em;
+}
+
+.upArrow{
+  height: 10vh;
+  width: 50vw;
+  background-color: green;
+}
+
+.middleSection{
+  height: 60vh;
+  width: 50vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.leftArrow{
+  height: 60vh;
+  width: 10vw;
+  background-color: red;
+}
+
+.gameScreen{
+  height: 60vh;
+  width: 60vh;
+  background-color: black;
+}
+
+.rightArrow{
+  height: 60vh;
+  width: 10vw;
+  background-color: orangered;
+}
+
+.downArrow{
+  height: 10vh;
+  width: 50vw;
+  background-color: yellowgreen;
+}
 
 /* Items display and description */
 .itemSection {
