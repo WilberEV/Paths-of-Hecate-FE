@@ -205,6 +205,7 @@
 }
 .upArrow img{
   height: 10vh;
+  cursor: pointer;
 }
 
 .middleSection{
@@ -228,12 +229,33 @@
 
 .leftArrow img{
   width: 10vh;
+  cursor: pointer;
 }
 
 .gameScreen{
   height: 60vh;
   width: 60vh;
   background-color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.gameBG{
+  height: 40vh;
+  width: 60vh;
+}
+
+.gameDescription{
+  height: 20vh;
+  width: 60vh;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  background: rgba(82, 87, 92, 0.75);
+  border-radius: 1em;
+  color: white;
 }
 
 .rightArrow{
@@ -247,6 +269,7 @@
 
 .rightArrow img{
   width: 10vh;
+  cursor: pointer;
 }
 
 .downArrow{
@@ -260,6 +283,7 @@
 
 .downArrow img{
   height: 10vh;
+  cursor: pointer;
 }
 
 /* Items display and description */

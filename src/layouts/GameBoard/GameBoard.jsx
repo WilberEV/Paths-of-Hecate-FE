@@ -5,7 +5,11 @@ import { images } from "../../Components/Images/Images";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
-import { bringCharacterData, updateCharacter } from "../../services/apiCalls";
+import {
+  bringCharacterData,
+  updateCharacter,
+  findLocation,
+} from "../../services/apiCalls";
 
 export const GameBoard = () => {
   const userRdxData = useSelector(userData);
@@ -38,6 +42,7 @@ export const GameBoard = () => {
   const [itemDescription, setItemDescription] = useState("");
   const [charaNumber, setCharaNumber] = useState(0);
   const [turnCounter, setTurnCounter] = useState(0);
+  const [description, setDescription] = useState("");
 
   //Handlers
   useEffect(() => {
@@ -60,7 +65,13 @@ export const GameBoard = () => {
             turnsPlayed: chara.turnsPlayed,
             xCoordinate: chara.xCoordinate,
             yCoordinate: chara.yCoordinate,
-          }))
+          })));
+        results.data.map((chara) =>
+          findLocation(chara.xCoordinate, chara.yCoordinate).then((res) => {
+            if (res.data !== null) {
+              setDescription(res.data.description);
+            }
+          })
         );
       })
       .catch((error) => console.log(error));
@@ -69,7 +80,7 @@ export const GameBoard = () => {
   useEffect(() => {
     updateCharacter(updatedChara, charaName, userRdxData.credentials.user.id)
       .then((results) => {
-        setTurnCounter(results.data.turnsLeft)
+        setTurnCounter(results.data.turnsLeft);
       })
       .catch((error) => console.log(error));
   }, [updatedChara]);
@@ -79,22 +90,33 @@ export const GameBoard = () => {
     let newYCoordinate = 0;
 
     if (value === "Up") {
-      newYCoordinate++;
+      newYCoordinate = updatedChara.yCoordinate + 1;
+      newXCoordinate = updatedChara.xCoordinate;
     } else if (value === "Down") {
-      newYCoordinate--;
+      newYCoordinate = updatedChara.yCoordinate - 1;
+      newXCoordinate = updatedChara.xCoordinate;
     } else if (value === "Left") {
-      newXCoordinate--;
+      newYCoordinate = updatedChara.yCoordinate;
+      newXCoordinate = updatedChara.xCoordinate - 1;
     } else if (value === "Right") {
-      newXCoordinate++;
+      newYCoordinate = updatedChara.yCoordinate;
+      newXCoordinate = updatedChara.xCoordinate + 1;
     }
 
-     setUpdatedChara((prevState) => ({
-      ...prevState,
-      turnsLeft: prevState.turnsLeft - 1,
-      turnsPlayed: prevState.turnsPlayed + 1,
-      xCoordinate: prevState.xCoordinate + newXCoordinate,
-      yCoordinate: prevState.yCoordinate + newYCoordinate,
-    }));
+    findLocation(newXCoordinate, newYCoordinate)
+      .then((res) => {
+        if (res.data !== null) {
+          setDescription(res.data.description),
+            setUpdatedChara((prevState) => ({
+              ...prevState,
+              turnsLeft: prevState.turnsLeft - 1,
+              turnsPlayed: prevState.turnsPlayed + 1,
+              xCoordinate: newXCoordinate,
+              yCoordinate: newYCoordinate,
+            }));
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   const checkItems = (item) => {
@@ -195,8 +217,16 @@ export const GameBoard = () => {
               <div className="leftArrow" onClick={() => charaPosition("Left")}>
                 <img src={images.Left} />
               </div>
-              <div className="gameScreen"></div>
-              <div className="rightArrow" onClick={() => charaPosition("Right")}>
+
+              <div className="gameScreen">
+                <div className="gameBG"></div>
+                <div className="gameDescription">{description}</div>
+              </div>
+
+              <div
+                className="rightArrow"
+                onClick={() => charaPosition("Right")}
+              >
                 <img src={images.Right} />
               </div>
             </div>

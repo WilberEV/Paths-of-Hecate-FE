@@ -45,8 +45,16 @@ export const charaCreate = async (data) =>{
 
 //Update Character
 export const updateCharacter = async (body, charaName, id) => {
-
-  console.log(body)
   return await axios.put(`http://localhost:3000/characters?name=${charaName}&owner=${id}`, body);
+
+}
+
+
+////////////////////Location RELATED FUNCTIONS////////////////////
+
+//Find characters's current location
+export const findLocation = async (X, Y) => {
+
+  return await axios.get(`http://localhost:3000/location?xCoordinate=${X}&yCoordinate=${Y}`);
 
 }
