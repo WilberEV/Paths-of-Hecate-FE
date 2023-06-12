@@ -20,7 +20,6 @@ export const GameBoard = () => {
     name: "",
     class: "",
     turnsLeft: 0,
-    turnsPlayed: 0,
     sprite: "",
     triggeredEvents: [],
     items: [],
@@ -38,10 +37,8 @@ export const GameBoard = () => {
   });
 
   const [charaName, setCharaName] = useState("ALL");
-  const [charaItems, setCharaItems] = useState([""]);
   const [itemDescription, setItemDescription] = useState("");
   const [charaNumber, setCharaNumber] = useState(0);
-  const [turnCounter, setTurnCounter] = useState(0);
   const [description, setDescription] = useState("");
 
   //Handlers
@@ -56,13 +53,12 @@ export const GameBoard = () => {
       .then((results) => {
         setCharaDetails(results.data);
         setCharaNumber(results.data.length);
-        results.data.map((chara) => setCharaItems(chara.items));
-        results.data.map((chara) => setTurnCounter(chara.turnsLeft));
         results.data.map((chara) =>
           setUpdatedChara((prevState) => ({
             ...prevState,
             turnsLeft: chara.turnsLeft,
             turnsPlayed: chara.turnsPlayed,
+            items: chara.items,
             xCoordinate: chara.xCoordinate,
             yCoordinate: chara.yCoordinate,
           })));
@@ -77,18 +73,9 @@ export const GameBoard = () => {
       .catch((error) => console.log(error));
   }, [charaName]);
 
-  useEffect(() => {
-    updateCharacter(updatedChara, charaName, userRdxData.credentials.user.id)
-      .then((results) => {
-        setTurnCounter(results.data.turnsLeft);
-      })
-      .catch((error) => console.log(error));
-  }, [updatedChara]);
-
   const charaPosition = (value) => {
     let newXCoordinate = 0;
     let newYCoordinate = 0;
-
     if (value === "Up") {
       newYCoordinate = updatedChara.yCoordinate + 1;
       newXCoordinate = updatedChara.xCoordinate;
@@ -120,7 +107,7 @@ export const GameBoard = () => {
   };
 
   const checkItems = (item) => {
-    return charaItems.includes(item);
+    return updatedChara.items.includes(item);
   };
 
   const chooseChara = (name) => {
@@ -202,14 +189,14 @@ export const GameBoard = () => {
             </div>
             <div className="mapContainer">
               {checkItems("Map") ? (
-                <div className="mapData" key={charaItems.key}></div>
+                <div className="mapData"></div>
               ) : (
                 <div></div>
               )}
             </div>
           </div>
           <div className="gameSection">
-            <div className="turnCounter">Turns left: {turnCounter}</div>
+            <div className="turnCounter">Turns left: {updatedChara.turnsLeft}</div>
             <div className="upArrow" onClick={() => charaPosition("Up")}>
               <img src={images.Up} />
             </div>
@@ -238,7 +225,7 @@ export const GameBoard = () => {
             <div className="inventoryContainer">
               <div>Inventory:</div>
               <div>
-                {charaItems.map((item) => {
+                {updatedChara.items.map((item) => {
                   return (
                     <div key={item._id} className="itemDisplay">
                       <div onClick={() => setItemDescription(item)}>{item}</div>
