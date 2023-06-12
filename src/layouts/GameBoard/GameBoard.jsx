@@ -5,7 +5,7 @@ import { images } from "../../Components/Images/Images";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
-import { bringCharacterData } from "../../services/apiCalls";
+import { bringCharacterData, updateCharacter } from "../../services/apiCalls";
 
 export const GameBoard = () => {
   const userRdxData = useSelector(userData);
@@ -20,6 +20,17 @@ export const GameBoard = () => {
     sprite: "",
     triggeredEvents: [],
     items: [],
+    xCoordinate: 0,
+    yCoordinate: 0,
+  });
+
+  const [updatedChara, setUpdatedChara] = useState({
+    turnsLeft: 0,
+    turnsPlayed: 0,
+    triggeredEvents: [],
+    items: [],
+    xCoordinate: 0,
+    yCoordinate: 0,
   });
 
   const [charaName, setCharaName] = useState("ALL");
@@ -42,9 +53,49 @@ export const GameBoard = () => {
         setCharaNumber(results.data.length);
         results.data.map((chara) => setCharaItems(chara.items));
         results.data.map((chara) => setTurnCounter(chara.turnsLeft));
+        results.data.map((chara) =>
+          setUpdatedChara((prevState) => ({
+            ...prevState,
+            turnsLeft: chara.turnsLeft,
+            turnsPlayed: chara.turnsPlayed,
+            xCoordinate: chara.xCoordinate,
+            yCoordinate: chara.yCoordinate,
+          }))
+        );
       })
       .catch((error) => console.log(error));
   }, [charaName]);
+
+  useEffect(() => {
+    updateCharacter(updatedChara, charaName, userRdxData.credentials.user.id)
+      .then((results) => {
+        setTurnCounter(results.data.turnsLeft)
+      })
+      .catch((error) => console.log(error));
+  }, [updatedChara]);
+
+  const charaPosition = (value) => {
+    let newXCoordinate = 0;
+    let newYCoordinate = 0;
+
+    if (value === "Up") {
+      newYCoordinate++;
+    } else if (value === "Down") {
+      newYCoordinate--;
+    } else if (value === "Left") {
+      newXCoordinate--;
+    } else if (value === "Right") {
+      newXCoordinate++;
+    }
+
+     setUpdatedChara((prevState) => ({
+      ...prevState,
+      turnsLeft: prevState.turnsLeft - 1,
+      turnsPlayed: prevState.turnsPlayed + 1,
+      xCoordinate: prevState.xCoordinate + newXCoordinate,
+      yCoordinate: prevState.yCoordinate + newYCoordinate,
+    }));
+  };
 
   const checkItems = (item) => {
     return charaItems.includes(item);
@@ -136,16 +187,22 @@ export const GameBoard = () => {
             </div>
           </div>
           <div className="gameSection">
-            <div className="turnCounter">
-              Turns left: {turnCounter}
+            <div className="turnCounter">Turns left: {turnCounter}</div>
+            <div className="upArrow" onClick={() => charaPosition("Up")}>
+              <img src={images.Up} />
             </div>
-            <div className="upArrow"></div>
             <div className="middleSection">
-              <div className="leftArrow"></div>
+              <div className="leftArrow" onClick={() => charaPosition("Left")}>
+                <img src={images.Left} />
+              </div>
               <div className="gameScreen"></div>
-              <div className="rightArrow"></div>
+              <div className="rightArrow" onClick={() => charaPosition("Right")}>
+                <img src={images.Right} />
+              </div>
             </div>
-            <div className="downArrow"></div>
+            <div className="downArrow" onClick={() => charaPosition("Down")}>
+              <img src={images.Down} />
+            </div>
           </div>
           <div className="itemSection">
             <div className="inventoryContainer">

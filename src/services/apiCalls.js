@@ -42,3 +42,11 @@ export const charaCreate = async (data) =>{
   return await axios.post('http://localhost:3000/characters/', data);
 
 }
+
+//Update Character
+export const updateCharacter = async (body, charaName, id) => {
+
+  console.log(body)
+  return await axios.put(`http://localhost:3000/characters?name=${charaName}&owner=${id}`, body);
+
+}
