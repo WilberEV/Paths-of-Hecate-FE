@@ -5,11 +5,7 @@ import { images } from "../../Components/Images/Images";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
-import {
-  bringCharacterData,
-  updateCharacter,
-  findLocation,
-} from "../../services/apiCalls";
+import { bringCharacterData, updateCharacter, findLocation } from "../../services/apiCalls";
 
 export const GameBoard = () => {
   const userRdxData = useSelector(userData);
@@ -35,11 +31,26 @@ export const GameBoard = () => {
     xCoordinate: 0,
     yCoordinate: 0,
   });
+  const [location, setLocation] = useState({
+    xCoordinate: 0,
+    yCoordinate: 0,
+    events: false,
+    description: [],
+    background: "",
+    answer: false,
+    effect: "",
+  });
+
+  const [directions, setDirections] = useState({
+    up: true,
+    down: true,
+    right: true,
+    left: true,
+  });
 
   const [charaName, setCharaName] = useState("ALL");
   const [itemDescription, setItemDescription] = useState("");
   const [charaNumber, setCharaNumber] = useState(0);
-  const [description, setDescription] = useState("");
 
   //Handlers
   useEffect(() => {
@@ -53,7 +64,8 @@ export const GameBoard = () => {
       .then((results) => {
         setCharaDetails(results.data);
         setCharaNumber(results.data.length);
-        results.data.map((chara) =>
+
+        results.data.forEach((chara) => {
           setUpdatedChara((prevState) => ({
             ...prevState,
             turnsLeft: chara.turnsLeft,
@@ -61,53 +73,98 @@ export const GameBoard = () => {
             items: chara.items,
             xCoordinate: chara.xCoordinate,
             yCoordinate: chara.yCoordinate,
-          })));
-        results.data.map((chara) =>
-          findLocation(chara.xCoordinate, chara.yCoordinate).then((res) => {
-            if (res.data !== null) {
-              setDescription(res.data.description);
-            }
-          })
-        );
+          }));
+
+          findLocation(chara.xCoordinate, chara.yCoordinate)
+            .then((res) => {
+              if (res.data !== null) {
+                setLocation(res.data);
+              }
+            })
+            .catch((error) => console.log(error));
+        });
       })
       .catch((error) => console.log(error));
   }, [charaName]);
 
+  useEffect(() => {
+    const updateGameScreen = async () => {
+      const updatedDirections = { ...directions };
+  
+      await Promise.all([
+        findLocation(updatedChara.xCoordinate, updatedChara.yCoordinate + 1),
+        findLocation(updatedChara.xCoordinate, updatedChara.yCoordinate - 1),
+        findLocation(updatedChara.xCoordinate + 1, updatedChara.yCoordinate),
+        findLocation(updatedChara.xCoordinate - 1, updatedChara.yCoordinate),
+      ]).then((results) => {
+        results.forEach((res, index) => {
+          const key = Object.keys(updatedDirections)[index];
+          updatedDirections[key] = res.data !== null;
+        });
+      });
+  
+      setDirections(updatedDirections);
+    };
+  
+    updateGameScreen();
+  }, [updatedChara]);
+
   const charaPosition = (value) => {
-    let newXCoordinate = 0;
-    let newYCoordinate = 0;
+    let newXCoordinate = updatedChara.xCoordinate;
+    let newYCoordinate = updatedChara.yCoordinate;
+
     if (value === "Up") {
-      newYCoordinate = updatedChara.yCoordinate + 1;
-      newXCoordinate = updatedChara.xCoordinate;
+      newYCoordinate++;
     } else if (value === "Down") {
-      newYCoordinate = updatedChara.yCoordinate - 1;
-      newXCoordinate = updatedChara.xCoordinate;
+      newYCoordinate--;
     } else if (value === "Left") {
-      newYCoordinate = updatedChara.yCoordinate;
-      newXCoordinate = updatedChara.xCoordinate - 1;
+      newXCoordinate--;
     } else if (value === "Right") {
-      newYCoordinate = updatedChara.yCoordinate;
-      newXCoordinate = updatedChara.xCoordinate + 1;
+      newXCoordinate++;
     }
 
     findLocation(newXCoordinate, newYCoordinate)
       .then((res) => {
-        if (res.data !== null) {
-          setDescription(res.data.description),
-            setUpdatedChara((prevState) => ({
-              ...prevState,
-              turnsLeft: prevState.turnsLeft - 1,
-              turnsPlayed: prevState.turnsPlayed + 1,
-              xCoordinate: newXCoordinate,
-              yCoordinate: newYCoordinate,
-            }));
-        }
+          setLocation(res.data);
+          setUpdatedChara((prevState) => ({
+            ...prevState,
+            turnsLeft: prevState.turnsLeft - 1,
+            turnsPlayed: prevState.turnsPlayed + 1,
+            xCoordinate: newXCoordinate,
+            yCoordinate: newYCoordinate,
+          }));
+
       })
       .catch((error) => console.log(error));
   };
 
+  const triggerEvent = (answer) => {
+    let charaData = {
+      ...updatedChara,
+      triggeredEvents: [
+        ...updatedChara.triggeredEvents,
+        [location.xCoordinate, location.yCoordinate],
+      ],
+    };
+
+    if (answer === location.answer) {
+      if (location.effect === "Map" || location.effect === "Torch") {
+        charaData.items = [...updatedChara.items, location.effect];
+      } else if (location.effect === "add") {
+        charaData.turnsLeft += 3;
+      } else if (location.effect === "remove") {
+        charaData.turnsLeft -= 3;
+      }
+    }
+    setUpdatedChara(charaData);
+  };
+
   const checkItems = (item) => {
     return updatedChara.items.includes(item);
+  };
+
+  const checkEvent = (X, Y) => {
+    return updatedChara.triggeredEvents.includes([X, Y]);
   };
 
   const chooseChara = (name) => {
@@ -125,10 +182,7 @@ export const GameBoard = () => {
                 {charaDetails.map((chara) => {
                   return (
                     <div key={chara._id} className="charaSelectionContainer">
-                      <div
-                        className="charaSelectionContainer2"
-                        onClick={() => chooseChara(chara.name)}
-                      >
+                      <div className="charaSelectionContainer2" onClick={() => chooseChara(chara.name)}>
                         {chara.sprite === "P1" && <img src={images.P1} />}
                         {chara.sprite === "P2" && <img src={images.P2} />}
                         {chara.sprite === "P3" && <img src={images.P3} />}
@@ -145,11 +199,7 @@ export const GameBoard = () => {
                 })}
                 <div>
                   {charaNumber >= 0 && charaNumber < 5 && (
-                    <img
-                      className="createCharaButton"
-                      src={images.Plus}
-                      onClick={() => navigate("/characters")}
-                    />
+                    <img className="createCharaButton" src={images.Plus} onClick={() => navigate("/characters")}/>
                   )}
                 </div>
               </div>
@@ -188,37 +238,51 @@ export const GameBoard = () => {
               )}
             </div>
             <div className="mapContainer">
-              {checkItems("Map") ? (
-                <div className="mapData"></div>
-              ) : (
-                <div></div>
-              )}
+              {checkItems("Map") ? (<div className="mapData"></div>) : (<div></div>)}
             </div>
           </div>
           <div className="gameSection">
-            <div className="turnCounter">Turns left: {updatedChara.turnsLeft}</div>
-            <div className="upArrow" onClick={() => charaPosition("Up")}>
-              <img src={images.Up} />
+            <div className="turnCounter">
+              Turns left: {updatedChara.turnsLeft}
+            </div>
+            <div className="upArrow" >
+                {directions.up === true && (
+                  <img src={images.Up} onClick={() => charaPosition("Up")}/>
+                )}
             </div>
             <div className="middleSection">
-              <div className="leftArrow" onClick={() => charaPosition("Left")}>
-                <img src={images.Left} />
+              <div className="leftArrow">
+              {directions.left === true && (
+                  <img src={images.Left} onClick={() => charaPosition("Left")}/>
+                )}
               </div>
 
               <div className="gameScreen">
-                <div className="gameBG"></div>
-                <div className="gameDescription">{description}</div>
+                <div className="gameBG">
+                  {location.events == true && (
+                    <div>
+                      {checkEvent(location.xCoordinate,location.yCoordinate) ? (<div></div>) : (
+                        <div className="gameBG">
+                          <div className="answerButton" onClick={() => triggerEvent(true)}>Yes</div>
+                          <div className="answerButton" onClick={() => triggerEvent(false)}>No</div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <div className="gameDescription">{location.description[0]}</div>
               </div>
 
-              <div
-                className="rightArrow"
-                onClick={() => charaPosition("Right")}
-              >
-                <img src={images.Right} />
+              <div className="rightArrow" >
+              {directions.right === true && (
+                  <img src={images.Right} onClick={() => charaPosition("Right")}/>
+                )}
               </div>
             </div>
-            <div className="downArrow" onClick={() => charaPosition("Down")}>
-              <img src={images.Down} />
+            <div className="downArrow" >
+            {directions.down === true && (
+                  <img src={images.Down} onClick={() => charaPosition("Down")}/>
+                )}
             </div>
           </div>
           <div className="itemSection">

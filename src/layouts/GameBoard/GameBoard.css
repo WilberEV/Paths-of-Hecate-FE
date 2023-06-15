@@ -243,6 +243,23 @@
 .gameBG{
   height: 40vh;
   width: 60vh;
+
+  display: flex;
+  align-items: end;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.answerButton{
+  height: 5vh;
+  width: 10vh;
+
+  background: rgba(82, 87, 92, 0.75);
+  border-radius: 0.5em;
+  color: white;
+  margin-bottom: 5vh;
+
+  cursor: pointer;
 }
 
 .gameDescription{

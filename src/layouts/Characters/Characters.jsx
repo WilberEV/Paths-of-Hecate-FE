@@ -61,7 +61,6 @@ export const Characters = () => {
   };
 
   const createCharacter = () => {
-    console.log(newCharacter, '/////newCharacter//////')
     charaCreate(newCharacter)
       .then((result) => {
         setMessage(
