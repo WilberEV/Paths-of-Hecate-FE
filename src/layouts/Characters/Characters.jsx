@@ -5,7 +5,7 @@ import { images } from "../../Components/Images/Images";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
-import { InputText } from "../../components/InputText/InputText";
+import { InputText } from "../../Components/InputText/InputText";
 import { charaCreate } from "../../services/apiCalls";
 
 export const Characters = () => {

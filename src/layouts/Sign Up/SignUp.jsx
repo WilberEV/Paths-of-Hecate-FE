@@ -4,7 +4,7 @@ import { images } from "../../Components/Images/Images";
 
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { InputText } from "../../components/InputText/InputText";
+import { InputText } from "../../Components/InputText/InputText";
 import { userSignUp } from "../../services/apiCalls";
 import { userData } from "../userSlice";
 
