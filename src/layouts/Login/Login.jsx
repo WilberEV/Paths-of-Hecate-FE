@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logInAccount } from "../../services/apiCalls";
 import jwt_decode from "jwt-decode";
-import { InputText } from "../../components/InputText/InputText";
+import { InputText } from "../../Components/InputText/InputText";
 import { login, userData } from "../userSlice";
 
 export const Login = () => {
