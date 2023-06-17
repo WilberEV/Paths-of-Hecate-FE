@@ -44,7 +44,7 @@ export const GameBoard = () => {
     background: "",
     answer: false,
     effect: [],
-    hints: '',
+    hints: "",
   });
 
   const [directions, setDirections] = useState({
@@ -83,10 +83,9 @@ export const GameBoard = () => {
             yCoordinate: chara.yCoordinate,
           }));
 
-          findLocation(chara.xCoordinate, chara.yCoordinate)
-            .then((res) => {
-                setLocation(res.data);
-            })
+          findLocation(chara.xCoordinate, chara.yCoordinate).then((res) => {
+            setLocation(res.data);
+          });
         });
       })
       .catch((error) => console.log(error));
@@ -163,21 +162,21 @@ export const GameBoard = () => {
       Excellent: 5,
       Good: 3,
       Bad: -3,
-      Terrible: -5
+      Terrible: -5,
     };
-    
+
     let value1 = effectValues[location.effect[0]] || 0;
     let value2 = effectValues[location.effect[1]] || 0;
 
     if (answer === location.answer) {
       if (location.effect[0] === "Map" || location.effect[0] === "Torch") {
         charaData.items = [...updatedChara.items, location.effect];
-      } 
+      }
       charaData.turnsLeft += value1;
-      setPage(3)
+      setPage(3);
     } else {
       charaData.turnsLeft += value2;
-      setPage(6)
+      setPage(6);
     }
     setHasEvent(false);
     setUpdatedChara(charaData);
@@ -199,12 +198,12 @@ export const GameBoard = () => {
         isEqual(event, [location.xCoordinate, location.yCoordinate])
       );
       if (location.events === true && containsArray === false) {
-        setPage(2)
+        setPage(2);
         setHasEvent(true);
       }
     } else if (page > 2 && page < 5) {
       setPage(page + 1);
-    } else if (page > 5 && page < location.description.length-1) {
+    } else if (page > 5 && page < location.description.length - 1) {
       setPage(page + 1);
     }
   };
@@ -224,12 +223,7 @@ export const GameBoard = () => {
                         className="charaSelectionContainer2"
                         onClick={() => chooseChara(chara.name)}
                       >
-                        {chara.sprite === "P1" && <img src={images.P1} />}
-                        {chara.sprite === "P2" && <img src={images.P2} />}
-                        {chara.sprite === "P3" && <img src={images.P3} />}
-                        {chara.sprite === "P4" && <img src={images.P4} />}
-                        {chara.sprite === "P5" && <img src={images.P5} />}
-                        {chara.sprite === "P6" && <img src={images.P6} />}
+                        <img src={chara.sprite} />
                       </div>
                       <div className="charaSelectionContainer3">
                         <div>Name: {chara.name}</div>
@@ -263,12 +257,7 @@ export const GameBoard = () => {
                     return (
                       <div key={chara._id} className="playerDataContainer">
                         <div className="playerDataContainer2">
-                          {chara.sprite === "P1" && <img src={images.P1} />}
-                          {chara.sprite === "P2" && <img src={images.P2} />}
-                          {chara.sprite === "P3" && <img src={images.P3} />}
-                          {chara.sprite === "P4" && <img src={images.P4} />}
-                          {chara.sprite === "P5" && <img src={images.P5} />}
-                          {chara.sprite === "P6" && <img src={images.P6} />}
+                          <img src={chara.sprite} />
                         </div>
                         <div className="playerDataContainer3">
                           <div>Name: {chara.name}</div>
@@ -310,7 +299,7 @@ export const GameBoard = () => {
               </div>
 
               <div className="gameScreen">
-                <img src={location.background}/>
+                <img src={location.background} />
                 <div className="gameBG">
                   {location.events == true && (
                     <div>
@@ -340,17 +329,19 @@ export const GameBoard = () => {
                         <div className="gameDescription">
                           {location.description[page]}
                         </div>
-                    )}
+                      )}
                       {page == 2 && (
                         <div className="gameDescription">
                           <div>{location.description[page]}</div>
                           <div>{location.hints}</div>
                         </div>
-                    )}
+                      )}
                     </div>
                   )}
                   {charaDetails[0]["class"] !== "MAGE" && (
-                    <div className="gameDescription">{location.description[page]}</div>
+                    <div className="gameDescription">
+                      {location.description[page]}
+                    </div>
                   )}
                 </div>
               </div>

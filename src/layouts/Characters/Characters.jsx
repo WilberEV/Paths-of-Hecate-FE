@@ -89,18 +89,18 @@ export const Characters = () => {
                 <div className="charaSprite">
                   {newCharacter.class === "EXPLORER" &&
                     (newCharacter.sprite === "" ||
-                      newCharacter.sprite == "P1") && (
-                      <img src={images.P1} onClick={() => charaDefiner("P1")} />
+                      newCharacter.sprite == "https://iili.io/H6gtOgt.png") && (
+                      <img src="https://iili.io/H6gtOgt.png" onClick={() => charaDefiner("https://iili.io/H6gtOgt.png")} />
                     )}
                   {newCharacter.class === "MAGE" &&
                     (newCharacter.sprite === "" ||
-                      newCharacter.sprite == "P3") && (
-                      <img src={images.P3} onClick={() => charaDefiner("P3")} />
+                      newCharacter.sprite == "https://iili.io/H6gtN1I.png") && (
+                      <img src="https://iili.io/H6gtN1I.png" onClick={() => charaDefiner("https://iili.io/H6gtN1I.png")} />
                     )}
                   {newCharacter.class === "WARRIOR" &&
                     (newCharacter.sprite === "" ||
-                      newCharacter.sprite == "P5") && (
-                      <img src={images.P5} onClick={() => charaDefiner("P5")} />
+                      newCharacter.sprite == "https://iili.io/H6gtkdX.png") && (
+                      <img src="https://iili.io/H6gtkdX.png" onClick={() => charaDefiner("https://iili.io/H6gtkdX.png")} />
                     )}
                 </div>
               )}
@@ -200,18 +200,18 @@ export const Characters = () => {
                 <div className="charaSprite">
                   {newCharacter.class === "EXPLORER" &&
                     (newCharacter.sprite === "" ||
-                      newCharacter.sprite == "P2") && (
-                      <img src={images.P2} onClick={() => charaDefiner("P2")} />
+                      newCharacter.sprite == "https://iili.io/H6gtv7n.png") && (
+                      <img src="https://iili.io/H6gtv7n.png" onClick={() => charaDefiner("https://iili.io/H6gtv7n.png")} />
                     )}
                   {newCharacter.class === "MAGE" &&
                     (newCharacter.sprite === "" ||
-                      newCharacter.sprite == "P4") && (
-                      <img src={images.P4} onClick={() => charaDefiner("P4")} />
+                      newCharacter.sprite == "https://iili.io/H6gt8es.png") && (
+                      <img src="https://iili.io/H6gt8es.png" onClick={() => charaDefiner("https://iili.io/H6gt8es.png")} />
                     )}
                   {newCharacter.class === "WARRIOR" &&
                     (newCharacter.sprite === "" ||
-                      newCharacter.sprite == "P6") && (
-                      <img src={images.P6} onClick={() => charaDefiner("P6")} />
+                      newCharacter.sprite == "https://iili.io/H6gtSmG.png") && (
+                      <img src="https://iili.io/H6gtSmG.png" onClick={() => charaDefiner("https://iili.io/H6gtSmG.png")} />
                     )}
                 </div>
               )}
