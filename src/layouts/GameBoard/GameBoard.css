@@ -158,15 +158,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background: rgba(82, 87, 92, 0.75);
-  border-radius: 1em;
-  color: white;
 }
 
 .mapData {
-  height: 35vh;
-  width: 35vh;
+  height: 30vh;
+  width: 20vw;
 
   background: black;
 }
@@ -220,7 +216,7 @@
 
 .leftArrow{
   height: 60vh;
-  width: 10vw;
+  width: 5vw;
 
   display: flex;
   align-items: center;
@@ -234,10 +230,19 @@
 
 .gameScreen{
   height: 60vh;
-  width: 60vh;
+  width: 40vw;
   background-color: black;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.gameScreen img{
+  position: fixed;
+  height: 60vh;
+  
 }
 
 .gameBG{
@@ -248,6 +253,7 @@
   align-items: end;
   justify-content: space-around;
   flex-direction: row;
+  z-index: 1;
 }
 
 .answerButton{
@@ -258,26 +264,30 @@
   border-radius: 0.5em;
   color: white;
   margin-bottom: 5vh;
-
+  z-index: 1;
   cursor: pointer;
 }
 
 .gameDescription{
   height: 20vh;
-  width: 60vh;
+  width: 40vw;
 
   display: flex;
-  justify-content: start;
-  align-items: center;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
 
   background: rgba(82, 87, 92, 0.75);
   border-radius: 1em;
   color: white;
+
+  cursor: pointer;
+  z-index: 1;
 }
 
 .rightArrow{
   height: 60vh;
-  width: 10vw;
+  width: 5vw;
 
   display: flex;
   align-items: center;

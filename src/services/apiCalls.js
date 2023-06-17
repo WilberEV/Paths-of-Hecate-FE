@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-// const URL = "http://localhost:3000/"
-const URL = "https://paths-of-hecate-be-production.up.railway.app"
+const URL = "http://localhost:3000"
+// const URL = "https://paths-of-hecate-be-production.up.railway.app"
 
 ////////////////////USER RELATED FUNCTIONS////////////////////
 
