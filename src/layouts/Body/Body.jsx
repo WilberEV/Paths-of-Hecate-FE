@@ -7,6 +7,7 @@ import { SignUp } from '../Sign Up/SignUp';
 import { Profile } from '../Profile/Profile';
 import { Characters } from '../Characters/Characters';
 import { GameBoard } from '../GameBoard/GameBoard';
+import { Admin } from '../Admin/Admin';
 
 export const Body = () => {
   return (
@@ -19,7 +20,7 @@ export const Body = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/characters" element={<Characters />} />
       <Route path="/gameboard" element={<GameBoard />} />
-      {/* <Route path="/admin" element={<Admin />} /> */}
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   </div>
   )

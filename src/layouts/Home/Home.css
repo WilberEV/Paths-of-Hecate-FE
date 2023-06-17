@@ -23,6 +23,9 @@
   z-index: 0;
   position: absolute;
 }
+.homeBG img{
+  height: 90vh;
+}
 
 .torches {
   height: 90vh;
