@@ -111,7 +111,7 @@ export const GameBoard = () => {
           if (res.data === null) {
             updatedDirections[key] = false;
           } else if (res.data !== null) {
-            if (res.data.yCoordinate === 2) {
+            if (res.data.yCoordinate === 4) {
               updatedDirections[key] = false;
             } else updatedDirections[key] = true;
           }
