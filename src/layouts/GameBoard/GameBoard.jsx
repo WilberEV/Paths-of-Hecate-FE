@@ -184,6 +184,7 @@ export const GameBoard = () => {
       }
       if (location.effect[0] === "Map" || location.effect[0] === "Torch") {
         charaData.items = [...updatedChara.items, location.effect];
+        setPage(3)
       }
       if (location.effect[0] === "WARRIOR") {
         if (charaDetails[0]["class"] === "WARRIOR") {
