@@ -1,362 +1,1321 @@
-.gameBody {
-  height: 90vh;
-  width: 100vw;
+@media (min-width: 550px) and (max-width: 1000px) {
 
-  background: radial-gradient(
-    circle,
-    rgba(45, 45, 48, 1) 0%,
-    rgba(7, 7, 10, 1) 55%
-  );
+  .gameBody {
+    height: 90vh;
+    width: 100vw;
+  
+    background: radial-gradient(
+      circle,
+      rgba(45, 45, 48, 1) 0%,
+      rgba(7, 7, 10, 1) 55%
+    );
+  
+    margin: 0;
+    padding: 0;
+  
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: space-around;
+    align-items: center;
+  }
 
-  margin: 0;
-  padding: 0;
-
-  display: flex;
-  flex-direction: row;
-
-  justify-content: space-around;
-  align-items: center;
-}
-
-
-/* Character selection menu */
-.chooseCharacter {
-  height: 70vh;
-
-  display: flex;
-  flex-direction: column;
-
-  background: rgba(82, 87, 92, 0.75);
-  border-radius: 1em;
-  color: white;
-
-  overflow: auto;
-  overflow-y: hidden;
-}
-.chooseCharacter p{
-  margin-right: 3vw;
-  margin-left: 3vw;
-}
-
-.characterSelection {
-  height: 65vh;
-  width: auto;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(82, 87, 92, 0.75);
-  border-radius: 1em;
-  color: white;
-
-  overflow: auto;
-  overflow-y: hidden;
-}
-
-.charaSelectionContainer {
-  height: 65vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.charaSelectionContainer2 {
-  height: 50vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-
-  cursor: pointer;
-}
-
-.charaSelectionContainer2 img {
-  height: 50vh;
-}
-
-.charaSelectionContainer3 {
-  height: 8vh;
-
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  flex-direction: column;
-}
-
-.createCharaButton {
-  height: 10vh;
-  width: 10vh;
-
-  margin-right: 3vw;
-  margin-left: 3vw;
-
-  cursor: pointer;
-}
-
-/* Current character display */
-.charaSection {
-  height: 90vh;
-  width: 25vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-}
-
-.playerData {
-  height: 50vh;
-  width: 25vw;
-
-  display: flex;
-
-  background: rgba(82, 87, 92, 0.75);
-  border-radius: 1em;
-  color: white;
-}
-
-.playerDataContainer {
-  height: 50vh;
-  width: 25vw;
-
-  display: flex;
-  flex-direction: row;
-}
-.playerDataContainer2 {
-  height: 50vh;
-  width: 15vw;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.playerDataContainer2 img {
-  width: 15vw;
-}
-.playerDataContainer3 {
-  height: 50vh;
-  width: 10vw;
-
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  flex-direction: column;
-
-  margin-top: 5vh;
-}
-
-/* Map display */
-.mapContainer {
-  height: 35vh;
-  width: 20vw;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.mapData {
-  height: 30vh;
-  width: 20vw;
-
-  background: black;
-}
-
-
-/* Game display and buttons */
-.gameSection {
-  height: 90vh;
-  width: 50vw;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.turnCounter{
-  height: 10vh;
-  width: 50vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-  font-family: hardinge;
-  font-size: 1.5em;
-}
-
-.upArrow{
-  height: 10vh;
-  width: 50vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.upArrow img{
-  height: 10vh;
-  cursor: pointer;
-}
-
-.middleSection{
-  height: 60vh;
-  width: 50vw;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-}
-
-.leftArrow{
-  height: 60vh;
-  width: 5vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
-
-.leftArrow img{
-  width: 10vh;
-  cursor: pointer;
-}
-
-.gameScreen{
-  height: 60vh;
-  width: 40vw;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.gameScreen img{
-  position: fixed;
-  height: 60vh;
+  .STOP{
+    display: none;
+  }
+  
+  
+  /* Character selection menu */
+  .chooseCharacter {
+    height: 75vh;
+  
+    display: flex;
+    flex-direction: column;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    overflow: auto;
+    overflow-y: hidden;
+  }
+  .chooseCharacter p{
+    margin-right: 3vw;
+    margin-left: 3vw;
+  }
+  
+  .characterSelection {
+    height: 65vh;
+    width: auto;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    overflow: auto;
+    overflow-y: hidden;
+  }
+  
+  .charaSelectionContainer {
+    height: 65vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .charaSelectionContainer2 {
+    height: 50vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  
+    cursor: pointer;
+  }
+  
+  .charaSelectionContainer2 img {
+    height: 50vh;
+  }
+  
+  .charaSelectionContainer3 {
+    height: 8vh;
+  
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  }
+  
+  .createCharaButton {
+    height: 10vh;
+    width: 10vh;
+  
+    margin-right: 3vw;
+    margin-left: 3vw;
+  
+    cursor: pointer;
+  }
+  
+  /* Current character display */
+  .charaSection {
+    height: 90vh;
+    width: 25vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .playerData {
+    height: 50vh;
+    width: 25vw;
+  
+    display: flex;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
+  
+  .playerDataContainer {
+    height: 50vh;
+    width: 25vw;
+  
+    display: flex;
+    flex-direction: row;
+  }
+  .playerDataContainer2 {
+    height: 50vh;
+    width: 15vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .playerDataContainer2 img {
+    width: 15vw;
+  }
+  .playerDataContainer3 {
+    height: 50vh;
+    width: 10vw;
+  
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  
+    margin-top: 5vh;
+  }
+  
+  /* Map display */
+  .mapContainer {
+    height: 35vh;
+    width: 20vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mapData {
+    height: 35vh;
+    width: 20vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: black;
+  }
+  .mapData img{
+    height: 35vh;
+    width: 35vh;
+  }
+  
+  
+  /* Game display and buttons */
+  .gameSection {
+    height: 90vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .turnCounter{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    color: white;
+    font-family: hardinge;
+    font-size: 1.5em;
+  }
+  
+  .upArrow{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .upArrow img{
+    height: 10vh;
+    cursor: pointer;
+  }
+  
+  .middleSection{
+    height: 60vh;
+    width: 50vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .leftArrow{
+    height: 60vh;
+    width: 5vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  .leftArrow img{
+    width: 10vh;
+    cursor: pointer;
+  }
+  
+  .gameScreen{
+    height: 60vh;
+    width: 40vw;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .gameScreen img{
+    position: fixed;
+    height: 60vh;
+    
+  }
+  
+  .gameBG{
+    height: 40vh;
+    width: 60vh;
+  
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    flex-direction: row;
+    z-index: 1;
+  }
+  
+  .answerButton{
+    height: 5vh;
+    width: 10vh;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 0.5em;
+    color: white;
+    margin-bottom: 5vh;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .gameDescription{
+    height: 20vh;
+    width: 40vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .rightArrow{
+    height: 60vh;
+    width: 5vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  
+  .rightArrow img{
+    width: 10vh;
+    cursor: pointer;
+  }
+  
+  .downArrow{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .downArrow img{
+    height: 10vh;
+    cursor: pointer;
+  }
+  
+  /* Items display and description */
+  .itemSection {
+    height: 90vh;
+    width: 25vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .inventoryContainer {
+    height: 50vh;
+    width: 25vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
+  
+  .itemDisplay {
+    height: 40vh;
+    width: 22vw;
+  
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: row;
+  }
+  
+  .itemDescription {
+    height: 35vh;
+    width: 25vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
   
 }
 
-.gameBG{
-  height: 40vh;
-  width: 60vh;
+@media (min-width: 1080px) and (max-width: 1199px) {
 
-  display: flex;
-  align-items: end;
-  justify-content: space-around;
-  flex-direction: row;
-  z-index: 1;
+  .gameBody {
+    height: 90vh;
+    width: 100vw;
+  
+    background: radial-gradient(
+      circle,
+      rgba(45, 45, 48, 1) 0%,
+      rgba(7, 7, 10, 1) 55%
+    );
+  
+    margin: 0;
+    padding: 0;
+  
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .STOP{
+    display: none;
+  }
+  
+  
+  /* Character selection menu */
+  .chooseCharacter {
+    height: 75vh;
+    width: 80vw;
+  
+    display: flex;
+    flex-direction: column;
+
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    overflow: auto;
+    overflow-y: hidden;
+  }
+  .chooseCharacter p{
+    margin-right: 3vw;
+    margin-left: 3vw;
+  }
+  
+  .characterSelection {
+    height: 65vh;
+    width: 80vw;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    overflow: auto;
+    overflow-y: hidden;
+  }
+  
+  .charaSelectionContainer {
+    height: 65vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .charaSelectionContainer2 {
+    height: 50vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  
+    cursor: pointer;
+  }
+  
+  .charaSelectionContainer2 img {
+    height: 50vh;
+  }
+  
+  .charaSelectionContainer3 {
+    height: 8vh;
+  
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  }
+  
+  .createCharaButton {
+    height: 10vh;
+    width: 10vh;
+  
+    margin-right: 3vw;
+    margin-left: 3vw;
+  
+    cursor: pointer;
+  }
+  
+  /* Current character display */
+  .charaSection {
+    height: 90vh;
+    width: 25vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .playerData {
+    height: 40vh;
+    width: 25vw;
+  
+    display: flex;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
+  
+  .playerDataContainer {
+    height: 50vh;
+    width: 25vw;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .playerDataContainer2 {
+    height: 50vh;
+    width: 15vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .playerDataContainer2 img {
+    width: 15vw;
+  }
+  .playerDataContainer3 {
+    height: 30vh;
+    width: 12vw;
+  
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+
+  }
+  
+  /* Map display */
+  .mapContainer {
+    height: 35vh;
+    width: 25vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mapData {
+    height: 25vh;
+    width: 25vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: black;
+  }
+  .mapData img{
+    height: 25vh;
+    width: 25vh;
+  }
+  
+  
+  /* Game display and buttons */
+  .gameSection {
+    height: 90vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .turnCounter{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    color: white;
+    font-family: hardinge;
+    font-size: 1.5em;
+  }
+  
+  .upArrow{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .upArrow img{
+    height: 10vh;
+    cursor: pointer;
+  }
+  
+  .middleSection{
+    height: 60vh;
+    width: 50vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .leftArrow{
+    height: 60vh;
+    width: 5vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  .leftArrow img{
+    width: 10vh;
+    cursor: pointer;
+  }
+  
+  .gameScreen{
+    height: 55vh;
+    width: 35vw;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .gameScreen img{
+    position: fixed;
+    width: 35vw;
+    
+  }
+  
+  .gameBG{
+    height: 40vh;
+    width: 30vh;
+  
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    flex-direction: row;
+    z-index: 1;
+  }
+  
+  .answerButton{
+    height: 5vh;
+    width: 10vh;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 0.5em;
+    color: white;
+    margin-bottom: 5vh;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .gameDescription{
+    height: 15vh;
+    width: 35vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .rightArrow{
+    height: 60vh;
+    width: 5vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  
+  .rightArrow img{
+    width: 10vh;
+    cursor: pointer;
+  }
+  
+  .downArrow{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .downArrow img{
+    height: 10vh;
+    cursor: pointer;
+  }
+  
+  /* Items display and description */
+  .itemSection {
+    height: 90vh;
+    width: 25vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .inventoryContainer {
+    height: 50vh;
+    width: 20vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
+  
+  .itemDisplay {
+    height: 40vh;
+    width: 18vw;
+  
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+  
+  .itemDescription {
+    height: 35vh;
+    width: 25vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
+  
 }
 
-.answerButton{
-  height: 5vh;
-  width: 10vh;
+@media (min-width: 1200px) {
 
-  background: rgba(82, 87, 92, 0.75);
-  border-radius: 0.5em;
-  color: white;
-  margin-bottom: 5vh;
-  z-index: 1;
-  cursor: pointer;
+  .gameBody {
+    height: 90vh;
+    width: 100vw;
+  
+    background: radial-gradient(
+      circle,
+      rgba(45, 45, 48, 1) 0%,
+      rgba(7, 7, 10, 1) 55%
+    );
+  
+    margin: 0;
+    padding: 0;
+  
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .STOP{
+    display: none;
+  }
+  
+  
+  /* Character selection menu */
+  .chooseCharacter {
+    height: 70vh;
+  
+    display: flex;
+    flex-direction: column;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    overflow: auto;
+    overflow-y: hidden;
+  }
+  .chooseCharacter p{
+    margin-right: 3vw;
+    margin-left: 3vw;
+  }
+  
+  .characterSelection {
+    height: 65vh;
+    width: auto;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    overflow: auto;
+    overflow-y: hidden;
+  }
+  
+  .charaSelectionContainer {
+    height: 65vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .charaSelectionContainer2 {
+    height: 50vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  
+    cursor: pointer;
+  }
+  
+  .charaSelectionContainer2 img {
+    height: 50vh;
+  }
+  
+  .charaSelectionContainer3 {
+    height: 8vh;
+  
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  }
+  
+  .createCharaButton {
+    height: 10vh;
+    width: 10vh;
+  
+    margin-right: 3vw;
+    margin-left: 3vw;
+  
+    cursor: pointer;
+  }
+  
+  /* Current character display */
+  .charaSection {
+    height: 90vh;
+    width: 25vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .playerData {
+    height: 50vh;
+    width: 25vw;
+  
+    display: flex;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
+  
+  .playerDataContainer {
+    height: 50vh;
+    width: 25vw;
+  
+    display: flex;
+    flex-direction: row;
+  }
+  .playerDataContainer2 {
+    height: 50vh;
+    width: 15vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .playerDataContainer2 img {
+    width: 15vw;
+  }
+  .playerDataContainer3 {
+    height: 50vh;
+    width: 10vw;
+  
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  
+    margin-top: 5vh;
+  }
+  
+  /* Map display */
+  .mapContainer {
+    height: 35vh;
+    width: 20vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mapData {
+    height: 35vh;
+    width: 20vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: black;
+  }
+  .mapData img{
+    height: 35vh;
+    width: 35vh;
+  }
+  
+  
+  /* Game display and buttons */
+  .gameSection {
+    height: 90vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .turnCounter{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    color: white;
+    font-family: hardinge;
+    font-size: 1.5em;
+  }
+  
+  .upArrow{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .upArrow img{
+    height: 10vh;
+    cursor: pointer;
+  }
+  
+  .middleSection{
+    height: 60vh;
+    width: 50vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .leftArrow{
+    height: 60vh;
+    width: 5vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  .leftArrow img{
+    width: 10vh;
+    cursor: pointer;
+  }
+  
+  .gameScreen{
+    height: 60vh;
+    width: 40vw;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .gameScreen img{
+    position: fixed;
+    height: 60vh;
+    
+  }
+  
+  .gameBG{
+    height: 40vh;
+    width: 60vh;
+  
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    flex-direction: row;
+    z-index: 1;
+  }
+  
+  .answerButton{
+    height: 5vh;
+    width: 10vh;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 0.5em;
+    color: white;
+    margin-bottom: 5vh;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .gameDescription{
+    height: 20vh;
+    width: 40vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .rightArrow{
+    height: 60vh;
+    width: 5vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  
+  .rightArrow img{
+    width: 10vh;
+    cursor: pointer;
+  }
+  
+  .downArrow{
+    height: 10vh;
+    width: 50vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .downArrow img{
+    height: 10vh;
+    cursor: pointer;
+  }
+  
+  /* Items display and description */
+  .itemSection {
+    height: 90vh;
+    width: 25vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .inventoryContainer {
+    height: 50vh;
+    width: 25vw;
+  
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
+  
+  .itemDisplay {
+    height: 40vh;
+    width: 22vw;
+  
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: row;
+  }
+  
+  .itemDescription {
+    height: 35vh;
+    width: 25vw;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background: rgba(82, 87, 92, 0.75);
+    border-radius: 1em;
+    color: white;
+  }
+  
 }
 
-.gameDescription{
-  height: 20vh;
-  width: 40vw;
 
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-direction: column;
+@media (orientation: portrait) {
 
-  background: rgba(82, 87, 92, 0.75);
-  border-radius: 1em;
-  color: white;
+  .gameBody {
+    height: 90vh;
+    width: 100vw;
+  
+    background: radial-gradient(
+      circle,
+      rgba(45, 45, 48, 1) 0%,
+      rgba(7, 7, 10, 1) 55%
+    );
+  
+    margin: 0;
+    padding: 0;
+  
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .STOP{
+    height: 90vh;
+    width: 100vw;
 
-  cursor: pointer;
-  z-index: 1;
-}
-
-.rightArrow{
-  height: 60vh;
-  width: 5vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-
-.rightArrow img{
-  width: 10vh;
-  cursor: pointer;
-}
-
-.downArrow{
-  height: 10vh;
-  width: 50vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.downArrow img{
-  height: 10vh;
-  cursor: pointer;
-}
-
-/* Items display and description */
-.itemSection {
-  height: 90vh;
-  width: 25vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-}
-
-.inventoryContainer {
-  height: 50vh;
-  width: 25vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  flex-direction: column;
-
-  background: rgba(82, 87, 92, 0.75);
-  border-radius: 1em;
-  color: white;
-}
-
-.itemDisplay {
-  height: 40vh;
-  width: 22vw;
-
-  display: flex;
-  align-items: start;
-  justify-content: start;
-  flex-direction: row;
-}
-
-.itemDescription {
-  height: 35vh;
-  width: 25vw;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: rgba(82, 87, 92, 0.75);
-  border-radius: 1em;
-  color: white;
+    display: flex;
+    position: absolute;
+  }
+  
+  /* Character selection menu */
+  .chooseCharacter {
+    display: none;
+  }
+  .chooseCharacter p{
+    display: none;
+  }
+  
+  .characterSelection {
+    display: none;
+  }
+  
+  .charaSelectionContainer {
+    display: none;
+  }
+  
+  .charaSelectionContainer2 {
+    display: none;
+  }
+  
+  .charaSelectionContainer2 img {
+    display: none;
+  }
+  
+  .charaSelectionContainer3 {
+    display: none;
+  }
+  
+  .createCharaButton {
+    display: none;
+  }
+  
+  /* Current character display */
+  .charaSection {
+    display: none;
+  }
+  
+  .playerData {
+    display: none;
+  }
+  
+  .playerDataContainer {
+    display: none;
+  }
+  .playerDataContainer2 {
+    display: none;
+  }
+  .playerDataContainer2 img {
+    display: none;
+  }
+  .playerDataContainer3 {
+    display: none;
+  }
+  
+  /* Map display */
+  .mapContainer {
+    display: none;
+  }
+  
+  .mapData {
+    display: none;
+  }
+  .mapData img{
+    display: none;
+  }
+  
+  
+  /* Game display and buttons */
+  .gameSection {
+    display: none;
+  }
+  
+  .turnCounter{
+    display: none;
+  }
+  
+  .upArrow{
+    display: none;
+  }
+  .upArrow img{
+    display: none;
+  }
+  
+  .middleSection{
+    display: none;
+  }
+  
+  .leftArrow{
+    display: none;
+  }
+  
+  .leftArrow img{
+    display: none;
+  }
+  
+  .gameScreen{
+    display: none;
+  }
+  
+  
+  .gameScreen img{
+    display: none;
+    
+  }
+  
+  .gameBG{
+    display: none;
+  }
+  
+  .answerButton{
+    display: none;
+  }
+  
+  .gameDescription{
+    display: none;
+  }
+  
+  .rightArrow{
+    display: none;
+  }
+  
+  .rightArrow img{
+    display: none;
+  }
+  
+  .downArrow{
+    display: none;
+  }
+  
+  .downArrow img{
+    display: none;
+  }
+  
+  /* Items display and description */
+  .itemSection {
+    display: none;
+  }
+  
+  .inventoryContainer {
+    display: none;
+  }
+  
+  .itemDisplay {
+    display: none;
+  }
+  
+  .itemDescription {
+    display: none;
+  }
+  
 }

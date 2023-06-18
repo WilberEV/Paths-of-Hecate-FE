@@ -1,57 +1,411 @@
-.profileBody{
+@media (max-width: 549px) {
+  .profileBody {
     height: 90vh;
     width: 100vw;
-  
-    background: radial-gradient(circle, rgba(12,23,19,1) 30%, rgba(7,7,10,1) 100%);
-  
+
+    background: radial-gradient(
+      circle,
+      rgba(12, 23, 19, 1) 30%,
+      rgba(7, 7, 10, 1) 100%
+    );
+
     margin: 0;
     padding: 0;
-  
+
     display: flex;
     flex-direction: row;
-  
+
     justify-content: start;
     align-items: start;
-}
+  }
 
-.profileBG{
+  .profileBG {
     height: 90vh;
     width: 100vw;
-    
+
     margin: 0;
     padding: 0;
-  
+
     display: flex;
     flex-direction: row;
-  
+
     justify-content: end;
     align-items: end;
 
     z-index: 0;
     position: absolute;
+  }
+
+  .profileBG img {
+    width: 100vw;
+    z-index: 0;
+    position: absolute;
+  }
+
+  .profileContainer {
+    height: 90vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 0;
+    position: absolute;
+  }
+
+  .userDataContainer {
+    height: 25vh;
+    width: 90vw;
+    margin-top: 10vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: rgba(82, 87, 92, 0.75);
+    color: white;
+    border-radius: 1em;
+  }
+
+  .userDataContainer2 {
+    height: 10vh;
+    width: 50vw;
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .userDataContainer3 {
+    height: 8vh;
+    width: 60vw;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .profileButtons {
+    width: 6em;
+    height: 3em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #101013;
+
+    border-radius: 0.5em;
+    transition: 0.3s;
+    color: white;
+
+    cursor: pointer;
+  }
+
+  .profileButtons:hover {
+    background-color: #4545c3;
+    transition: 0.3s;
+  }
+
+  .charaDataContainer {
+    height: 80vh;
+    width: 80vw;
+    margin-top: 5vh;
+
+    display: flex;
+    justify-content: space-between;
+
+    background-color: rgba(82, 87, 92, 0.75);
+    color: white;
+    border-radius: 1em;
+
+    overflow: auto;
+  }
+
+  .charaDataContainerBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .charaDataContainer2 {
+    height: 50vh;
+    width: 80vw;
+
+    display: flex;
+  }
+
+  .charaDataContainer2 img{
+    height: 50vh;
+    width: 80vw;
+  }
+
+  .charaDataContainer3 {
+    height: 20vh;
+    width: 75vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .newCharaButton {
+    height: 15vh;
+    width: 50vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+  }
+
+  .newCharaButton img {
+    height: 10vh;
+    width: 10vh;
+  }
 }
 
-.profileBG img{
+@media (min-width: 550px) and (max-width: 1199px) {
+    .profileBody {
+        height: 90vh;
+        width: 100vw;
+    
+        background: radial-gradient(
+          circle,
+          rgba(12, 23, 19, 1) 30%,
+          rgba(7, 7, 10, 1) 100%
+        );
+    
+        margin: 0;
+        padding: 0;
+    
+        display: flex;
+        flex-direction: row;
+    
+        justify-content: start;
+        align-items: start;
+      }
+    
+      .profileBG {
+        height: 90vh;
+        width: 100vw;
+    
+        margin: 0;
+        padding: 0;
+    
+        display: flex;
+        flex-direction: row;
+    
+        justify-content: end;
+        align-items: end;
+    
+        z-index: 0;
+        position: absolute;
+      }
+    
+      .profileBG img {
+        width: 100vw;
+        z-index: 0;
+        position: absolute;
+      }
+    
+      .profileContainer {
+        height: 90vh;
+        width: 100vw;
+    
+        display: flex;
+        flex-direction: column;
+    
+        justify-content: space-around;
+        align-items: center;
+    
+        z-index: 0;
+        position: absolute;
+      }
+    
+      .userDataContainer {
+        height: 25vh;
+        width: 50vw;
+        margin-top: 10vh;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    
+        background-color: rgba(82, 87, 92, 0.75);
+        color: white;
+        border-radius: 1em;
+      }
+    
+      .userDataContainer2 {
+        height: 10vh;
+        width: 25vw;
+    
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+      }
+    
+      .userDataContainer3 {
+        height: 8vh;
+        width: 50vw;
+    
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+      }
+    
+      .profileButtons {
+        width: 6em;
+        height: 3em;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        background-color: #101013;
+    
+        border-radius: 0.5em;
+        transition: 0.3s;
+        color: white;
+    
+        cursor: pointer;
+      }
+    
+      .profileButtons:hover {
+        background-color: #4545c3;
+        transition: 0.3s;
+      }
+    
+      .charaDataContainer {
+        height: 80vh;
+        width: 80vw;
+        margin-top: 5vh;
+    
+        display: flex;
+        justify-content: space-between;
+    
+        background-color: rgba(82, 87, 92, 0.75);
+        color: white;
+        border-radius: 1em;
+    
+        overflow: auto;
+      }
+    
+      .charaDataContainerBox {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+    
+      .charaDataContainer2 {
+        height: 50vh;
+        width: 80vw;
+    
+        display: flex;
+        justify-content: center;
+      }
+    
+      .charaDataContainer2 img{
+        height: 50vh;
+        width: 50vw;
+      }
+    
+      .charaDataContainer3 {
+        height: 20vh;
+        width: 75vw;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .newCharaButton {
+        height: 15vh;
+        width: 50vw;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        cursor: pointer;
+      }
+    
+      .newCharaButton img {
+        height: 10vh;
+        width: 10vh;
+      }
+}
+
+@media (min-width: 1200px) {
+  .profileBody {
+    height: 90vh;
+    width: 100vw;
+
+    background: radial-gradient(
+      circle,
+      rgba(12, 23, 19, 1) 30%,
+      rgba(7, 7, 10, 1) 100%
+    );
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: start;
+    align-items: start;
+  }
+
+  .profileBG {
+    height: 90vh;
+    width: 100vw;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: end;
+    align-items: end;
+
+    z-index: 0;
+    position: absolute;
+  }
+
+  .profileBG img {
     height: 90vh;
     z-index: 0;
     position: absolute;
-}
+  }
 
-.profileContainer{
+  .profileContainer {
     height: 90vh;
     width: 90vw;
 
     display: flex;
     flex-direction: row-reverse;
-  
+
     justify-content: space-around;
     align-items: start;
 
     z-index: 0;
     position: absolute;
-}
+  }
 
-.userDataContainer{
+  .userDataContainer {
     height: 35vh;
     width: 25vw;
     margin-top: 10vh;
@@ -61,13 +415,12 @@
     align-items: center;
     flex-direction: column;
 
-    background-color: rgba(82,87,92,0.75);
+    background-color: rgba(82, 87, 92, 0.75);
     color: white;
     border-radius: 1em;
+  }
 
-}
-
-.userDataContainer2{
+  .userDataContainer2 {
     height: 20vh;
     width: 20vw;
 
@@ -75,10 +428,9 @@
     justify-content: start;
     align-items: start;
     flex-direction: column;
+  }
 
-}
-
-.userDataContainer3{
+  .userDataContainer3 {
     height: 8vh;
     width: 20vw;
 
@@ -86,33 +438,31 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-}
+  }
 
-.profileButtons {
-
+  .profileButtons {
     width: 6em;
     height: 3em;
-  
+
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     background-color: #101013;
-  
+
     border-radius: 0.5em;
     transition: 0.3s;
     color: white;
-  
+
     cursor: pointer;
-}
+  }
 
-.profileButtons:hover {
-
+  .profileButtons:hover {
     background-color: #4545c3;
     transition: 0.3s;
-}
+  }
 
-.charaDataContainer{
+  .charaDataContainer {
     height: 80vh;
     width: 50vw;
     margin-top: 5vh;
@@ -120,31 +470,28 @@
     display: flex;
     justify-content: space-between;
 
-    background-color: rgba(82,87,92,0.75);
+    background-color: rgba(82, 87, 92, 0.75);
     color: white;
     border-radius: 1em;
 
     overflow: auto;
     scrollbar-width: none;
+  }
 
-}
-
-.charaDataContainerBox{
+  .charaDataContainerBox {
     display: flex;
     justify-content: center;
     flex-direction: row;
+  }
 
-}
-
-.charaDataContainer2{
+  .charaDataContainer2 {
     height: 75vh;
     width: 30vw;
 
     display: flex;
+  }
 
-}
-
-.charaDataContainer3{
+  .charaDataContainer3 {
     height: 75vh;
     width: 10vw;
 
@@ -152,9 +499,8 @@
     justify-content: center;
     align-items: start;
     flex-direction: column;
-
-}
-.newCharaButton{
+  }
+  .newCharaButton {
     height: 15vh;
     width: 50vw;
 
@@ -163,9 +509,10 @@
     align-items: center;
 
     cursor: pointer;
-}
+  }
 
-.newCharaButton img{
+  .newCharaButton img {
     height: 10vh;
     width: 10vh;
+  }
 }

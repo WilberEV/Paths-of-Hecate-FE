@@ -141,17 +141,29 @@ export const Admin = () => {
                     </div>
                   );
                 })}
-                <div className="adminContainer3">
-                  <div className="adminButtons" onClick={() => modifyData()}>
-                    Edit
-                  </div>
-                  <div className="adminButtons" onClick={() => displayChara()}>
-                    Characters
-                  </div>
+                <div>
+                  {profileDetails.length == 1 && (
+                    <div className="adminContainer3">
+                      <div
+                        className="adminButtons"
+                        onClick={() => modifyData()}
+                      >
+                        Edit
+                      </div>
+                      <div
+                        className="adminButtons"
+                        onClick={() => displayChara()}
+                      >
+                        Characters
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
-          {profileDetails[0]["_id"] !== "" && editData === true && showChara === false && (
+          {profileDetails[0]["_id"] !== "" &&
+            editData === true &&
+            showChara === false && (
               <div>
                 {profileDetails.map((person) => {
                   return (
@@ -163,34 +175,44 @@ export const Admin = () => {
                           className={"basicInput"}
                           defaultValue={person.name}
                           name={"name"}
-                          handler={userHandler}/>
+                          handler={userHandler}
+                        />
                         <div>Email:</div>
                         <InputText
                           type={"email"}
                           className={"basicInput"}
                           defaultValue={person.email}
                           name={"email"}
-                          handler={userHandler}/>
+                          handler={userHandler}
+                        />
                         <div>Role:</div>
                         <InputText
                           type={"role"}
                           className={"basicInput"}
                           defaultValue={person.role}
                           name={"role"}
-                          handler={userHandler}/>
+                          handler={userHandler}
+                        />
                         <div>Password:</div>
                         <InputText
                           type={"password"}
                           className={"basicInput"}
                           placeholder={"Password"}
                           name={"password"}
-                          handler={userHandler}/>
+                          handler={userHandler}
+                        />
                       </div>
                       <div className="adminContainer3">
-                        <div className="adminButtons" onClick={() => updateUser()}>
+                        <div
+                          className="adminButtons"
+                          onClick={() => updateUser()}
+                        >
                           Confirm
                         </div>
-                        <div className="adminButtons" onClick={() => dontModifyData()}>
+                        <div
+                          className="adminButtons"
+                          onClick={() => dontModifyData()}
+                        >
                           Cancel
                         </div>
                       </div>
@@ -206,7 +228,11 @@ export const Admin = () => {
                 <div>
                   {charaDetails.map((chara) => {
                     return (
-                      <div className="characterInformation" key={chara._id} onClick={() => chooseChara(chara.name)}>
+                      <div
+                        className="characterInformation"
+                        key={chara._id}
+                        onClick={() => chooseChara(chara.name)}
+                      >
                         <div className="userSplit"></div>
                         <div>Name: {chara.name}</div>
                         <div>Class: {chara.class}</div>
@@ -219,7 +245,10 @@ export const Admin = () => {
                 </div>
 
                 <div className="adminContainer3">
-                  <div className="adminButtons" onClick={() => dontDisplayChara()}>
+                  <div
+                    className="adminButtons"
+                    onClick={() => dontDisplayChara()}
+                  >
                     Back
                   </div>
                   <div className="adminButtons" onClick={() => displayChara()}>

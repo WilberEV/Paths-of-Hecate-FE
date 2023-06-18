@@ -6,6 +6,8 @@ import Up from "../../assets/img/arrowUp.png";
 import Left from "../../assets/img/arrowLeft.png";
 import Right from "../../assets/img/arrowRight.png";
 import Down from "../../assets/img/arrowDown.png";
+import Map from "../../assets/img/map.png";
+import Stop from "../../assets/img/STOP.jpg";
 
 export const images = {
   Home,
@@ -16,4 +18,6 @@ export const images = {
   Left,
   Right,
   Down,
+  Map,
+  Stop,
 };

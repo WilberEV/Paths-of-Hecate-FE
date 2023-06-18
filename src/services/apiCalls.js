@@ -77,9 +77,17 @@ export const deleteCharacterData = async (charaName, id) => {
   return await axios.delete(`${URL}/characters?name=${charaName}&owner=${id}`);
 };
 
-////////////////////Location RELATED FUNCTIONS////////////////////
+////////////////////LOCATION RELATED FUNCTIONS////////////////////
 
 //Find characters's current location
 export const findLocation = async (X, Y) => {
   return await axios.get(`${URL}/location?xCoordinate=${X}&yCoordinate=${Y}`);
+};
+
+
+////////////////////ITEMS RELATED FUNCTIONS////////////////////
+
+//Find characters's current location
+export const findItem = async (name) => {
+  return await axios.get(`${URL}/items/${name}`);
 };

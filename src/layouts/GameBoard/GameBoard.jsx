@@ -10,6 +10,7 @@ import {
   bringCharacterData,
   updateCharacter,
   findLocation,
+  findItem
 } from "../../services/apiCalls";
 
 export const GameBoard = () => {
@@ -208,8 +209,15 @@ export const GameBoard = () => {
     }
   };
 
+  const getItemDescription = (name) =>{
+    findItem(name).then((results)=>{
+      setItemDescription(results.data.description)
+    })
+  }
+
   return (
     <div className="gameBody">
+      <img src={images.Stop} className="STOP"/>
       {charaName === "ALL" ? (
         <div>
           {charaDetails.name !== "" ? (
@@ -273,7 +281,9 @@ export const GameBoard = () => {
             </div>
             <div className="mapContainer">
               {checkItems("Map") ? (
-                <div className="mapData"></div>
+                <div className="mapData">
+                  <img src={images.Map} />
+                </div>
               ) : (
                 <div></div>
               )}
@@ -368,7 +378,7 @@ export const GameBoard = () => {
                 {updatedChara.items.map((item) => {
                   return (
                     <div key={item._id} className="itemDisplay">
-                      <div onClick={() => setItemDescription(item)}>{item}</div>
+                      <div onClick={() => getItemDescription(item)}>{item}</div>
                     </div>
                   );
                 })}

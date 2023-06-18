@@ -101,13 +101,13 @@ export const Profile = () => {
         <img src={images.ProBG} />
       </div>
       <div className="profileContainer">
-        <div className="userDataContainer">
-          <h3>User details</h3>
+        <div >
           <div>
             {profileDetails.name !== "" ? (
               <div>
                 {editData === false && (
-                  <div>
+                  <div className="userDataContainer">
+                    <h3>User details</h3>
                     {profileDetails.map((person) => {
                       return (
                         <div className="userDataContainer2" key={person._id}>
