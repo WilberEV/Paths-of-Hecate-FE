@@ -151,9 +151,7 @@ export const Admin = () => {
                 </div>
               </div>
             )}
-          {profileDetails[0]["_id"] !== "" &&
-            editData === true &&
-            showChara === false && (
+          {profileDetails[0]["_id"] !== "" && editData === true && showChara === false && (
               <div>
                 {profileDetails.map((person) => {
                   return (
@@ -208,7 +206,7 @@ export const Admin = () => {
                 <div>
                   {charaDetails.map((chara) => {
                     return (
-                      <div className="userInformation" key={chara._id} onClick={() => chooseChara(chara.name)}>
+                      <div className="characterInformation" key={chara._id} onClick={() => chooseChara(chara.name)}>
                         <div className="userSplit"></div>
                         <div>Name: {chara.name}</div>
                         <div>Class: {chara.class}</div>

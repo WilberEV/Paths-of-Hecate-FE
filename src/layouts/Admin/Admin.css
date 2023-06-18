@@ -118,6 +118,19 @@
 
 }
 
+.characterInformation{
+    
+    height: 40vh;
+    width: 40vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-direction: column;
+    border-top: 5vh;
+
+    cursor: pointer;
+}
+
 .adminRigthContainer{
     height: 55vh;
     width: 30vw;
@@ -136,25 +149,6 @@
     justify-content: start;
     align-items: start;
     flex-direction: row;
-}
-.adminRigthButtons {
-
-    height: 5vh;
-    width: 5vw;
-
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: #4561c3;
-
-    border-radius: 0.5em;
-    transition: 0.3s;
-    color: white;
-    font-weight: bold;
-
-    cursor: pointer;
 }
 
 .userSplit{

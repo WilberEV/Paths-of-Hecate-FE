@@ -5,7 +5,8 @@ import { images } from "../../Components/Images/Images";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
-import { bringUserProfile, bringCharacterData } from "../../services/apiCalls";
+import { bringUserProfile, bringCharacterData, deleteCharacterData } from "../../services/apiCalls";
+import { InputText } from "../../Components/InputText/InputText";
 
 export const Profile = () => {
   const userRdxData = useSelector(userData);
@@ -15,6 +16,15 @@ export const Profile = () => {
   const [profileDetails, setProfileDetails] = useState({
     name: "",
     email: "",
+  });
+
+  const [userID, setUserID] = useState({
+    _id: "",
+    name: "",
+    email: "",
+    role: "",
+    createdAt: "",
+    updatedAt: "",
   });
 
   const [charaDetails, setCharaDetails] = useState({
@@ -27,6 +37,8 @@ export const Profile = () => {
     items: [],
   });
 
+  const [editData, seteditData] = useState(false);
+  const [deleteChara, setDeleteChara] = useState(false);
   const [charaNumber, setCharaNumber] = useState(0);
 
   //Handlers
@@ -48,13 +60,40 @@ export const Profile = () => {
   }, [profileDetails]);
 
   useEffect(() => {
-    bringCharacterData('ALL', userRdxData.credentials.user.id)
+    bringCharacterData("ALL", userRdxData.credentials.user.id)
       .then((results) => {
         setCharaDetails(results.data);
         setCharaNumber(results.data.length);
       })
       .catch((error) => console.log(error));
   }, [charaDetails]);
+
+  const updateUser = () => {
+    updateUserProfile(userID._id, userID, userRdxData.credentials.token)
+      .then(() => {
+        dontModifyData();
+        getUsers(userID._id);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const eraseCharacter = (name) =>{
+    if(deleteChara == true){
+      deleteCharacterData(name, userRdxData.credentials.user.id)
+        .then(()=>setDeleteChara(false))
+        .catch((error) => console.log(error))
+    }
+  }
+
+  const userHandler = (e) => {
+    setUserID((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const modifyData = () => seteditData(true);
+  const dontModifyData = () => seteditData(false);
 
   return (
     <div className="profileBody">
@@ -67,16 +106,71 @@ export const Profile = () => {
           <div>
             {profileDetails.name !== "" ? (
               <div>
-                {profileDetails.map((person) => {
-                  return (
-                    <div className="userDataContainer2" key={person._id}>
-                      <div>Name:</div>
-                      <div>{person.name}</div>
-                      <div>Email:</div>
-                      <div>{person.email}</div>
+                {editData === false && (
+                  <div>
+                    {profileDetails.map((person) => {
+                      return (
+                        <div className="userDataContainer2" key={person._id}>
+                          <div>Name:</div>
+                          <div>{person.name}</div>
+                          <div>Email:</div>
+                          <div>{person.email}</div>
+                        </div>
+                      );
+                    })}
+                    <div className="userDataContainer3">
+                      <div className="profileButtons" onClick={()=>modifyData()}>
+                        Edit
+                      </div>
+                      <div className="profileButtons" onClick={()=>setDeleteChara(true)}>
+                        Delete Character
+                      </div>
                     </div>
-                  );
-                })}
+                  </div>
+                )}
+
+                {editData === true && (
+                  <div>
+                    {profileDetails.map((person) => {
+                      return (
+                        <div>
+                          <div className="userDataContainer2" key={person._id}>
+                            <div>Email:</div>
+                            <InputText
+                              type={"email"}
+                              className={"basicInput"}
+                              defaultValue={person.email}
+                              name={"email"}
+                              handler={userHandler}
+                            />
+                            <div>Password:</div>
+                            <InputText
+                              type={"password"}
+                              className={"basicInput"}
+                              placeholder={"Password"}
+                              name={"password"}
+                              handler={userHandler}
+                            />
+                          </div>
+                          <div className="userDataContainer3">
+                            <div
+                              className="profileButtons"
+                              onClick={() => updateUser()}
+                            >
+                              Confirm
+                            </div>
+                            <div
+                              className="profileButtons"
+                              onClick={() => dontModifyData()}
+                            >
+                              Cancel
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             ) : (
               <div>Loading</div>
@@ -88,7 +182,7 @@ export const Profile = () => {
             <div>
               {charaDetails.map((chara) => {
                 return (
-                  <div key={chara._id} className="charaDataContainerBox">
+                  <div key={chara._id} className="charaDataContainerBox" onClick={()=>eraseCharacter(chara.name)}>
                     <div className="charaDataContainer2">
                       <img src={chara.sprite} />
                     </div>

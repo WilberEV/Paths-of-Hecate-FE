@@ -72,6 +72,11 @@ export const updateCharacter = async (body, charaName, id) => {
   );
 };
 
+//Delete Character
+export const deleteCharacterData = async (charaName, id) => {
+  return await axios.delete(`${URL}/characters?name=${charaName}&owner=${id}`);
+};
+
 ////////////////////Location RELATED FUNCTIONS////////////////////
 
 //Find characters's current location
