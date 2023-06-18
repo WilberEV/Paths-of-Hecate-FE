@@ -22,43 +22,32 @@ export const Header = () => {
   };
 
   return (
-    <div>
-      {!datosUserRedux?.credentials?.token ? (
-        <div>
-          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Container>
-              <Navbar.Brand href="/">Paths of Hecate</Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto">
-                </Nav>
-                <Nav>
-                  <Nav.Link href="login">Login</Nav.Link>
-                  <Nav.Link href="signup">Sign Up</Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
-            </Container>
-          </Navbar>
-        </div>
-      ) : (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="/">Paths of Hecate</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="me-auto">
-                <Nav.Link href="profile">Profile</Nav.Link>
-              </Nav>
-              <Nav>
-                {datosUserRedux?.credentials?.user.role === "ADMIN" && (
-                  <Nav.Link href="admin">Admin</Nav.Link>
-                )}
-                <Nav.Link onClick={() => logMeOut()}>Log Out</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-      )}
-    </div>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ zIndex: 100 }}>
+      <Container>
+        <Navbar.Brand href="/">Paths of Hecate</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+        {!datosUserRedux?.credentials?.token ? (
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="login">Login</Nav.Link>
+              <Nav.Link href="signup">Sign Up</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        ) : (
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="profile">Profile</Nav.Link>
+            </Nav>
+            <Nav className="me-auto">
+              {datosUserRedux?.credentials?.user.role === "ADMIN" && (
+                <Nav.Link href="admin">Admin</Nav.Link>
+              )}
+              <Nav.Link onClick={() => logMeOut()}>Log Out</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        )}
+      </Container>
+    </Navbar>
   );
 };

@@ -44,5 +44,7 @@
 .navbar{
   height: 10vh;
   width: 100vw !important;
+  z-index: 1;
+  position: absolute;
 
 }

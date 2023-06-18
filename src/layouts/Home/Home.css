@@ -1,5 +1,6 @@
 @media (max-width: 549px) {
   .homeBody {
+    height: 90vh;
     width: 100vw;
 
     background: radial-gradient(

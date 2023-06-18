@@ -10,6 +10,7 @@ import {
   updateUserProfile,
   bringCharacterData,
 } from "../../services/apiCalls";
+import jwt_decode from "jwt-decode";
 import { InputText } from "../../Components/InputText/InputText";
 
 export const Admin = () => {
@@ -53,11 +54,11 @@ export const Admin = () => {
 
   //Handlers
   useEffect(() => {
-    if (
-      !userRdxData.credentials.token ||
-      userRdxData.credentials.user.role !== "ADMIN"
-    ) {
-      navigate("/");
+    if (!userRdxData.credentials.token) {
+      const decoded = jwt_decode(userRdxData.credentials.token);
+      if (decoded.role !== "ADMIN") {
+        navigate("/");
+      }
     }
   }, []);
 
