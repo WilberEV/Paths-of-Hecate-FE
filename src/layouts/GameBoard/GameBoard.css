@@ -353,8 +353,8 @@
   }
   
   .itemDisplay {
-    height: 40vh;
-    width: 22vw;
+    height: 5vh;
+    width: 20vw;
   
     display: flex;
     align-items: start;
@@ -734,13 +734,13 @@
   }
   
   .itemDisplay {
-    height: 40vh;
-    width: 18vw;
+    height: 5vh;
+    width: 20vw;
   
     display: flex;
     align-items: start;
     justify-content: start;
-    flex-direction: column;
+    flex-direction: row;
   }
   
   .itemDescription {
@@ -1113,8 +1113,8 @@
   }
   
   .itemDisplay {
-    height: 40vh;
-    width: 22vw;
+    height: 5vh;
+    width: 20vw;
   
     display: flex;
     align-items: start;

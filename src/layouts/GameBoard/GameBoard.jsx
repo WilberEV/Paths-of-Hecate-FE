@@ -6,12 +6,8 @@ import { isEqual } from "lodash";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
-import {
-  bringCharacterData,
-  updateCharacter,
-  findLocation,
-  findItem
-} from "../../services/apiCalls";
+import { bringCharacterData, updateCharacter, findLocation,findItem} 
+  from "../../services/apiCalls";
 
 export const GameBoard = () => {
   const userRdxData = useSelector(userData);
@@ -68,6 +64,7 @@ export const GameBoard = () => {
     }
   }, []);
 
+  //Sets character once choosen
   useEffect(() => {
     bringCharacterData(charaName, userRdxData.credentials.user.id)
       .then((results) => {
@@ -92,6 +89,7 @@ export const GameBoard = () => {
       .catch((error) => console.log(error));
   }, [charaName]);
 
+  //Updates screen when changing places
   useEffect(() => {
     const updateGameScreen = async () => {
       const updatedDirections = { ...directions };
@@ -110,7 +108,13 @@ export const GameBoard = () => {
       ]).then((results) => {
         results.forEach((res, index) => {
           const key = Object.keys(updatedDirections)[index];
-          updatedDirections[key] = res.data !== null;
+          if (res.data === null) {
+            updatedDirections[key] = false;
+          } else if (res.data !== null) {
+            if (res.data.yCoordinate === 2) {
+              updatedDirections[key] = false;
+            } else updatedDirections[key] = true;
+          }
         });
       });
 
@@ -120,6 +124,7 @@ export const GameBoard = () => {
     updateGameScreen();
   }, [updatedChara]);
 
+  //Determines player's position
   const charaPosition = (value) => {
     let newXCoordinate = updatedChara.xCoordinate;
     let newYCoordinate = updatedChara.yCoordinate;
@@ -150,47 +155,76 @@ export const GameBoard = () => {
       .catch((error) => console.log(error));
   };
 
+  //Applies effect of current location
   const triggerEvent = (answer) => {
-    let charaData = {
-      ...updatedChara,
-      triggeredEvents: [
-        ...updatedChara.triggeredEvents,
-        [location.xCoordinate, location.yCoordinate],
-      ],
-    };
+    if (location.effect[0] !== "Exit") {
+      let charaData = {
+        ...updatedChara,
+        triggeredEvents: [
+          ...updatedChara.triggeredEvents,
+          [location.xCoordinate, location.yCoordinate],
+        ],
+      };
+      const effectValues = {
+        Excellent: 5,
+        Good: 3,
+        Bad: -3,
+        Terrible: -5,
+      };
 
-    const effectValues = {
-      Excellent: 5,
-      Good: 3,
-      Bad: -3,
-      Terrible: -5,
-    };
+      let value1 = effectValues[location.effect[0]] || 0;
+      let value2 = effectValues[location.effect[1]] || 0;
 
-    let value1 = effectValues[location.effect[0]] || 0;
-    let value2 = effectValues[location.effect[1]] || 0;
-
-    if (answer === location.answer) {
+      if (answer === location.answer) {
+        charaData.turnsLeft += value1;
+        setPage(3);
+      } else {
+        charaData.turnsLeft += value2;
+        setPage(6);
+      }
       if (location.effect[0] === "Map" || location.effect[0] === "Torch") {
         charaData.items = [...updatedChara.items, location.effect];
       }
-      charaData.turnsLeft += value1;
-      setPage(3);
+      if (location.effect[0] === "WARRIOR") {
+        if (charaDetails[0]["class"] === "WARRIOR") {
+          setPage(3);
+        } else {
+          charaData.turnsLeft -= 3;
+          setPage(6);
+        }
+      }
+      setUpdatedChara(charaData);
     } else {
-      charaData.turnsLeft += value2;
-      setPage(6);
+      let torches = checkItems("Torch");
+      if (torches == true) {
+        let newYCoordinate = updatedChara.yCoordinate + 1;
+        setPage(3);
+        findLocation(updatedChara.xCoordinate, newYCoordinate).then(() => {
+          setUpdatedChara((prevState) => ({
+            ...prevState,
+            yCoordinate: newYCoordinate,
+          }));
+        });
+      } else setPage(6);
     }
     setHasEvent(false);
-    setUpdatedChara(charaData);
   };
 
+  //Checks if player has a certain item
   const checkItems = (item) => {
+    if (item === "Torch") {
+      const countItems = updatedChara.items.filter((e) => e === item).length;
+      return countItems >= 2;
+    }
     return updatedChara.items.includes(item);
   };
 
+  //Selects current character
   const chooseChara = (name) => {
     return setCharaName(name);
   };
 
+  //Pass to the next 'Page' of the description
   const nextPage = () => {
     if (page < 1) {
       setPage(page + 1);
@@ -209,15 +243,16 @@ export const GameBoard = () => {
     }
   };
 
-  const getItemDescription = (name) =>{
-    findItem(name).then((results)=>{
-      setItemDescription(results.data.description)
-    })
-  }
+  //Shows Item's information
+  const getItemDescription = (name) => {
+    findItem(name).then((results) => {
+      setItemDescription(results.data.description);
+    });
+  };
 
   return (
     <div className="gameBody">
-      <img src={images.Stop} className="STOP"/>
+      <img src={images.Stop} className="STOP" />
       {charaName === "ALL" ? (
         <div>
           {charaDetails.name !== "" ? (
@@ -227,10 +262,7 @@ export const GameBoard = () => {
                 {charaDetails.map((chara) => {
                   return (
                     <div key={chara._id} className="charaSelectionContainer">
-                      <div
-                        className="charaSelectionContainer2"
-                        onClick={() => chooseChara(chara.name)}
-                      >
+                      <div className="charaSelectionContainer2" onClick={() => chooseChara(chara.name)}>
                         <img src={chara.sprite} />
                       </div>
                       <div className="charaSelectionContainer3">
@@ -242,11 +274,7 @@ export const GameBoard = () => {
                 })}
                 <div>
                   {charaNumber >= 0 && charaNumber < 5 && (
-                    <img
-                      className="createCharaButton"
-                      src={images.Plus}
-                      onClick={() => navigate("/characters")}
-                    />
+                    <img className="createCharaButton" src={images.Plus} onClick={() => navigate("/characters")}/>
                   )}
                 </div>
               </div>
@@ -301,10 +329,7 @@ export const GameBoard = () => {
             <div className="middleSection">
               <div className="leftArrow">
                 {directions.left === true && (
-                  <img
-                    src={images.Left}
-                    onClick={() => charaPosition("Left")}
-                  />
+                  <img src={images.Left} onClick={() => charaPosition("Left")}/>
                 )}
               </div>
 
@@ -313,22 +338,17 @@ export const GameBoard = () => {
                 <div className="gameBG">
                   {location.events == true && (
                     <div>
-                      {hasEvent == true && (
-                        <div className="gameBG">
-                          <div
-                            className="answerButton"
-                            onClick={() => triggerEvent(true)}
-                          >
-                            Yes
+                      {hasEvent == true &&
+                        location.effect[0] !== ("Map" || "Torch") && (
+                          <div className="gameBG">
+                            <div className="answerButton" onClick={() => triggerEvent(true)}>
+                              Yes
+                            </div>
+                            <div className="answerButton" onClick={() => triggerEvent(false)}>
+                              No
+                            </div>
                           </div>
-                          <div
-                            className="answerButton"
-                            onClick={() => triggerEvent(false)}
-                          >
-                            No
-                          </div>
-                        </div>
-                      )}
+                        )}
                     </div>
                   )}
                 </div>
@@ -358,10 +378,7 @@ export const GameBoard = () => {
 
               <div className="rightArrow">
                 {directions.right === true && (
-                  <img
-                    src={images.Right}
-                    onClick={() => charaPosition("Right")}
-                  />
+                  <img src={images.Right} onClick={() => charaPosition("Right")}/>
                 )}
               </div>
             </div>
